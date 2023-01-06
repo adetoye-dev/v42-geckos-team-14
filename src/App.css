@@ -1,0 +1,40 @@
+body {
+  font-family: sans-serif;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  place-items: center;
+}
+
+.previewArea {
+  width: 70%;
+  background-color: rgb(221, 220, 220);
+  height: 100vh;
+}
+
+div {
+  margin: 10px;
+}
+
+.c1 {
+  display: block;
+  background-color: rgb(200, 21, 21);
+  padding: 20px 150px;
+}
+
+.c2 {
+  display: block;
+  background-color: rgb(21, 200, 54);
+  padding: 70px 100px;
+}
+
+.c3 {
+  display: block;
+  background-color: rgb(97, 68, 228);
+  padding: 70px 100px;
+}

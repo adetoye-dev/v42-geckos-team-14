@@ -19,6 +19,7 @@ body {
 
 div {
   margin: 10px;
+  width: fit-content;
 }
 
 .c1 {

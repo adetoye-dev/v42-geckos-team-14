@@ -19,23 +19,25 @@ body {
 
 div {
   margin: 10px;
-  width: fit-content;
 }
 
 .c1 {
   display: block;
   background-color: rgb(200, 21, 21);
   padding: 20px 150px;
+  width: fit-content;
 }
 
 .c2 {
   display: block;
   background-color: rgb(21, 200, 54);
   padding: 70px 100px;
+  width: fit-content;
 }
 
 .c3 {
   display: block;
   background-color: rgb(97, 68, 228);
   padding: 70px 100px;
+  width: fit-content;
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import Component from "./Component";
 
-function PreviewArea() {
+function PreviewArea(props) {
   const [htmlCode, sethtmlCode] = useState("The code will be here");
   const [showTab, setShowTab] = useState(true);
 
@@ -12,6 +13,9 @@ function PreviewArea() {
     link.setAttribute("download", "index.html");
     link.click();
   }
+
+  const renderComponents = props.components && props.components.map(component => <Component class={component.className} key={component.id}/>)
+  
 
   return (
     <div>
@@ -26,7 +30,9 @@ function PreviewArea() {
       <span className="overlapArea">
         <section
           className={showTab ? "previewArea showTab" : "previewArea hideTab"}
-        ></section>
+        >
+          {renderComponents}
+        </section>
         <section className={!showTab ? "codeArea showTab" : "codeArea hideTab"}>
           <button onClick={saveToFile}>Save</button>
           <pre id="generatedCode" onChange={(e) => sethtmlCode(e.target.value)}>

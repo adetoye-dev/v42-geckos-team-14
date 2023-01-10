@@ -17,6 +17,5 @@ function useCursorPosition() {
         );
         };
     }, []);
-    // console.log(cursorPos);
 }
 export default useCursorPosition;

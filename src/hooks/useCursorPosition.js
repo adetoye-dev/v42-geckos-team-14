@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 
 function useCursorPosition() {
-    const [cursorPos, setCursorPos] = useState({});
+    const [cursorPosition, setCursorPosition] = useState({});
+    const [cursorPosSnap, setCursorPosSnap] = useState({});
 
     useEffect(() => {
         const handleCursorMove = (event) => {
-        setCursorPos({ left: event.clientX, top: event.clientY });
+        setCursorPosition({ left: event.clientX, top: event.clientY });
         };
 
         window.addEventListener('mousemove', handleCursorMove);
@@ -17,5 +18,22 @@ function useCursorPosition() {
         );
         };
     }, []);
+
+    useEffect(() => {
+        const handleCursorPositionSnap = (event) => {
+        setCursorPosSnap({ left: event.clientX, top: event.clientY });
+        };
+
+        window.addEventListener('mousedown', handleCursorPositionSnap);
+
+        return () => {
+        window.removeEventListener(
+            'mousedown',
+            handleCursorPositionSnap
+        );
+        };
+    }, []);
+
+    return {cursorPosition, cursorPosSnap}
 }
 export default useCursorPosition;

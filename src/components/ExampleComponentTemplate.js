@@ -1,8 +1,7 @@
 function ExampleComponentTemplate(props) {
 
     return (
-        <div className={`${props.className}`} id={`${props.id}`}
-        >
+        <div className={`${props.className}`} id={`${props.id}`}>
             Example
         </div>
     );

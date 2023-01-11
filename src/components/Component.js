@@ -1,23 +1,30 @@
-import { useState } from "react";
 import useDragAndDrop from "../hooks/useDragAndDrop";
 
-function Component(props) {
-  const [position, setPosition] = useState(props.startPosition);
-  const { mouseDownHandler, mouseUpHandler, mouseMoveHandler } = useDragAndDrop();
 
+function Component(props) {
+  const { setIsComponentMove, componentPosition } = useDragAndDrop(props.startPosition);
+  
   const myStyle = {
     position: "absolute",
-    top: `${position.top}px`,
-    left: `${position.left}px`,
+    top: `${componentPosition.top}px`,
+    left: `${componentPosition.left}px`,
+  }
+  // const myStyle = {
+  //   position: "absolute",
+  //   top: `${componentPosition.top}px`,
+  //   left: `${componentPosition.left}px`,
+  // }
+
+  function mouseDownHandler(e) {
+    const leftMouseButton = 0;
+    e.button === leftMouseButton && setIsComponentMove(true);
   }
 
     return (
         <div 
         className={`${props.class}`} 
         style={myStyle}
-        onMouseDown={mouseDownHandler}
-        onMouseUp={mouseUpHandler}
-        // onMouseMove={mouseMoveHandler}
+        onMouseDown={(e)=>mouseDownHandler(e)}
         >
             ExampleComponent
         </div>

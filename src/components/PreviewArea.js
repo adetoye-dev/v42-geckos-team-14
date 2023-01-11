@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import Component from "./Component";
-import useDragAndDrop from "../hooks/useDragAndDrop";
 
 function PreviewArea(props) {
   const [htmlCode, sethtmlCode] = useState("The code will be here");
@@ -15,10 +14,10 @@ function PreviewArea(props) {
     link.click();
   }
 
-  const renderComponents = props.components.map((component, index) =><Component 
-  class={component.className} 
-  startPosition={{top: component.offsetTop , left: component.offsetLeft} } 
-  key={`${component.id}${index}`} 
+  const renderComponents = props.components.map((component, index) => <Component 
+    class={component.className} 
+    startPosition={{ top: component.offsetTop , left: component.offsetLeft } } 
+    key={`${component.id}${index}`} 
   />)
   
   return (

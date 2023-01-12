@@ -24,5 +24,6 @@ function ComponentList(props) {
       </div>
     </section>
   );
+}
 
 export default ComponentList;

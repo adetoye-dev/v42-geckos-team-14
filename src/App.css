@@ -30,6 +30,7 @@ div {
   display: inline-block;
   background-color: rgb(200, 21, 21);
   padding: 20px 150px;
+  user-select: none;
 }
 
 .c2 {
@@ -37,6 +38,7 @@ div {
   display: inline-block;
   background-color: rgb(21, 200, 54);
   padding: 50px 60px;
+  user-select: none;
 }
 
 .c3 {
@@ -44,6 +46,7 @@ div {
   display: inline-block;
   background-color: rgb(97, 68, 228);
   padding: 70px 100px;
+  user-select: none;
 }
 
 pre {

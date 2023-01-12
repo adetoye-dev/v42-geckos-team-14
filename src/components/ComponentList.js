@@ -10,7 +10,7 @@ function ComponentList(props) {
 
   const [updateResizerRef] = useResizer(null);
   return (
-    <section>
+    <section id="ComponentList" onClick={props.onSelectComponent}>
       <ExampleComponentTemplate className="c1" id="c1" ref={refOne} onClick={() => updateResizerRef(refOne)} text="Component 1"/>
       <div ref={refTwo} className="c2" onClick={() => updateResizerRef(refTwo)}>
         Component 2

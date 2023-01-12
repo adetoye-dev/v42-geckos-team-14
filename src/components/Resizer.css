@@ -1,0 +1,49 @@
+.resizeable-element {
+  padding: 0;
+  position: relative;
+  border: 2px solid #533535;
+  width: 100px;
+  height: 100px;
+  min-width: 12px;
+  min-height: 12px;
+  margin: 0 auto;
+}
+
+.resizer {
+  position: absolute;
+  background: black;
+  margin: 0;
+  padding: 0;
+}
+
+.resizer-top {
+  cursor: row-resize;
+  height: 2px;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.resizer-right {
+  cursor: col-resize;
+  height: 100%;
+  right: 0;
+  top: 0;
+  width: 2px;
+}
+
+.resizer-bottom {
+  cursor: row-resize;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.resizer-left {
+  cursor: col-resize;
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 2px;
+}

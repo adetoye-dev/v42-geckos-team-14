@@ -1,4 +1,4 @@
-import ExampleComponentTemplate  from "./ExampleComponentTemplate";
+import ExampleComponentTemplate from "./ExampleComponentTemplate";
 import useResizer from "./useResizer";
 import "./Resizer.css";
 import { useRef } from "react";
@@ -11,7 +11,13 @@ function ComponentList(props) {
   const [updateResizerRef] = useResizer(null);
   return (
     <section id="ComponentList" onClick={props.onSelectComponent}>
-      <ExampleComponentTemplate className="c1" id="c1" ref={refOne} onClick={() => updateResizerRef(refOne)} text="Component 1"/>
+      <ExampleComponentTemplate
+        className="c1"
+        id="c1"
+        refId={refOne}
+        onClick={() => updateResizerRef(refOne)}
+        text="Component 1"
+      />
       <div ref={refTwo} className="c2" onClick={() => updateResizerRef(refTwo)}>
         Component 2
       </div>

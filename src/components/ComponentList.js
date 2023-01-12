@@ -1,9 +1,11 @@
-function ComponentList() {
+import ExampleComponentTemplate  from "./ExampleComponentTemplate";
+
+function ComponentList(props) {
     return (
-      <section>
-        <div className="c1">Component 1</div>
-        <div className="c2">Component 2</div>
-        <div className="c3">Component 3</div>
+      <section id="ComponentList" onMouseDown={props.onSelectComponent}>
+        <ExampleComponentTemplate className="c1" id="c1" />
+        <div className="c2" id="c2">Component 2</div>
+        <div className="c3" id="c3">Component 3</div>
       </section>
     );
 }

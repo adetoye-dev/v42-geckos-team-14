@@ -6,7 +6,7 @@ function ExampleComponentTemplate(props) {
       onClick={props.onClick}
       ref={props.refId}
     >
-      Example
+      {props.text}
     </div>
   );
 }

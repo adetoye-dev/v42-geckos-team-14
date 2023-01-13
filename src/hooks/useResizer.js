@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./Resizer.css";
+import "../components/Resizer.css";
 
 const useResizer = (refInput) => {
   const [resizerRef, updateResizerRef] = useState(refInput);

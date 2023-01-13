@@ -1,5 +1,5 @@
 import ExampleComponentTemplate from "./ExampleComponentTemplate";
-import useResizer from "./useResizer";
+import useResizer from "../hooks/useResizer";
 import "./Resizer.css";
 import { useRef } from "react";
 

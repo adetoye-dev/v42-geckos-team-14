@@ -8,17 +8,12 @@ function Component(props) {
     position: "absolute",
     top: `${componentPosition.top}px`,
     left: `${componentPosition.left}px`,
-  }
-  // const myStyle = {
-  //   position: "absolute",
-  //   top: `${componentPosition.top}px`,
-  //   left: `${componentPosition.left}px`,
-  // }
+  };
 
   function mouseDownHandler(e) {
     const leftMouseButton = 0;
     e.button === leftMouseButton && setIsComponentMove(true);
-  }
+  };
 
     return (
         <div 

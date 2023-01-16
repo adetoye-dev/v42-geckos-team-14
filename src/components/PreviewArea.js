@@ -1,9 +1,11 @@
-import React, {  useState } from "react";
+import React, {  useEffect, useRef, useState } from "react";
 import Component from "./Component";
 
 function PreviewArea(props) {
   const [htmlCode, sethtmlCode] = useState("The code will be here");
   const [showTab, setShowTab] = useState(true);
+  const [previewAreaBoundaries, setPreviewAreaBoundaries] = useState(null);
+  const PreviewAreaRef = useRef(null);
 
   async function saveToFile() {
     let myBlob = new Blob([htmlCode], { type: "text/document" });
@@ -14,9 +16,31 @@ function PreviewArea(props) {
     link.click();
   }
 
+  function checkPreviewBoundaries() {
+    const preview = PreviewAreaRef.current;
+    setPreviewAreaBoundaries({
+        offsetLeft: preview.offsetLeft,
+        offsetRight: preview.offsetLeft + preview.offsetWidth,
+        offsetTop: preview.offsetTop,
+        offsetBottom: preview.offsetTop + preview.offsetHeight
+      })
+  }
+
+  useEffect(()=>{
+    checkPreviewBoundaries()
+  },[])
+
+  useEffect(() => {
+    window.addEventListener('resize', checkPreviewBoundaries);
+    return () => {
+      window.removeEventListener('resize', checkPreviewBoundaries);
+    }
+  }, [])
+
   const renderComponents = props.components.map((component, index) => <Component 
     class={component.className} 
-    startPosition={{ top: component.offsetTop , left: component.offsetLeft } } 
+    startPosition={{ top: component.offsetTop , left: component.offsetLeft }}
+    previewAreaBoundaries={previewAreaBoundaries} 
     key={`${component.id}${index}`} 
   />)
   
@@ -33,6 +57,7 @@ function PreviewArea(props) {
       <span className="overlapArea">
         <section
           className={showTab ? "previewArea showTab" : "previewArea hideTab"}
+          ref={PreviewAreaRef}
         >
           {renderComponents}
         </section>

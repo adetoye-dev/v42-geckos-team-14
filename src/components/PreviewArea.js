@@ -22,6 +22,8 @@ function PreviewArea(props) {
     />
   ));
 
+  // Copy
+
   return (
     <div>
       <span>
@@ -39,7 +41,12 @@ function PreviewArea(props) {
           {renderComponents}
         </section>
         <section className={!showTab ? "codeArea showTab" : "codeArea hideTab"}>
-          <button onClick={saveToFile}>Save</button>
+          <span>
+            <button onClick={saveToFile}>Save</button>
+            <button onClick={() => navigator.clipboard.writeText(htmlCode)}> 
+              Copy
+            </button>
+          </span>
           <pre id="generatedCode" onChange={(e) => sethtmlCode(e.target.value)}>
             The code will be here
           </pre>

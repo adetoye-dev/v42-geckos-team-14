@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import Component from "./Component";
 
 function PreviewArea(props) {
@@ -14,12 +14,14 @@ function PreviewArea(props) {
     link.click();
   }
 
-  const renderComponents = props.components.map((component, index) => <Component 
-    class={component.className} 
-    startPosition={{ top: component.offsetTop , left: component.offsetLeft } } 
-    key={`${component.id}${index}`} 
-  />)
-  
+  const renderComponents = props.components.map((component, index) => (
+    <Component
+      class={component.className}
+      startPosition={{ top: component.offsetTop, left: component.offsetLeft }}
+      key={`${component.id}${index}`}
+    />
+  ));
+
   return (
     <div>
       <span>

@@ -2,7 +2,7 @@ import useDragAndDrop from "../hooks/useDragAndDrop";
 
 
 function Component(props) {
-  const { setIsComponentMove, componentPosition } = useDragAndDrop(props.startPosition);
+  const { setIsComponentMove, componentPosition } = useDragAndDrop(props.startPosition, props.previewAreaBoundaries);
   
   const myStyle = {
     position: "absolute",

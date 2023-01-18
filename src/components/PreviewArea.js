@@ -5,7 +5,7 @@ function PreviewArea(props) {
   const [htmlCode, sethtmlCode] = useState("The code will be here");
   const [showTab, setShowTab] = useState(true);
   const [previewAreaBoundaries, setPreviewAreaBoundaries] = useState(null);
-  const PreviewAreaRef = useRef(null);
+  const previewAreaRef = useRef(null);
 
   async function saveToFile() {
     let myBlob = new Blob([htmlCode], { type: "text/document" });
@@ -17,13 +17,19 @@ function PreviewArea(props) {
   }
 
   function checkPreviewBoundaries() {
-    const preview = PreviewAreaRef.current;
+    const preview = previewAreaRef.current;
     setPreviewAreaBoundaries({
-        offsetLeft: preview.offsetLeft,
-        offsetRight: preview.offsetLeft + preview.offsetWidth,
-        offsetTop: preview.offsetTop,
-        offsetBottom: preview.offsetTop + preview.offsetHeight
+        left: preview.getBoundingClientRect().left,
+        right: preview.getBoundingClientRect().right,
+        top: preview.getBoundingClientRect().top,
+        bottom: preview.getBoundingClientRect().bottom
       })
+    // setPreviewAreaBoundaries({
+    //     left: preview.offsetLeft,
+    //     right: preview.offsetLeft + preview.offsetWidth,
+    //     top: preview.offsetTop,
+    //     bottom: preview.offsetTop + preview.offsetHeight
+    //   })
   }
 
   useEffect(()=>{
@@ -57,7 +63,7 @@ function PreviewArea(props) {
       <span className="overlapArea">
         <section
           className={showTab ? "previewArea showTab" : "previewArea hideTab"}
-          ref={PreviewAreaRef}
+          ref={previewAreaRef}
         >
           {renderComponents}
         </section>

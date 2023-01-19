@@ -4,16 +4,6 @@ function useCursorPosition() {
     const [cursorPosition, setCursorPosition] = useState({});
     const [cursorPosSnap, setCursorPosSnap] = useState({});
 
-
-//     function handleCursorMove(event) {
-//             setCursorPosition({ left: event.clientX, top: event.clientY })
-//     }
-
-//     function handleCursorPositionSnap(event) {
-//             setCursorPosSnap({ left: event.clientX, top: event.clientY })
-//     }
-
-
     useEffect(() => {
         const handleCursorMove = (event) => {
         setCursorPosition({ left: event.clientX, top: event.clientY });

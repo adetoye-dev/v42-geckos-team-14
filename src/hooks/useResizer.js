@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./Resizer.css";
+import "../components/Resizer.css";
 
 const useResizer = (refInput) => {
-  const [resizerRef, updateResizerRef] = useState(refInput);
+  const [resizerRef, setResizerRef] = useState(refInput);
 
   useEffect(() => {
     if (resizerRef) {
@@ -136,7 +136,7 @@ const useResizer = (refInput) => {
     }
   }, [resizerRef]);
 
-  return [updateResizerRef];
+  return [setResizerRef];
 };
 
 export default useResizer;

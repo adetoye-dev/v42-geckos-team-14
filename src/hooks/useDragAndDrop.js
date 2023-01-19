@@ -92,14 +92,14 @@ function useDragAndDrop(startPosition, areaBoundaries) {
       const left = cursorPosition.left - (cursorPosSnap.left - componentOffsetSnap.left);
 
       if (outPreviewArea(areaBoundaries) === false) { 
-          console.log('warunek 1');
+          console.log('Condition 1');
         setComponentInPreviewArea(true);
         setComponentPosition({
         top: top,
         left: left
       })
       } else if (!componentInPreviewArea) {
-        console.log('warunek 2');
+        console.log('Condition 2');
         setComponentPosition({
           top: top,
           left: left
@@ -119,10 +119,10 @@ function useDragAndDrop(startPosition, areaBoundaries) {
       areaBoundaries.right <= componentOffset.right ||
       areaBoundaries.bottom <= componentOffset.bottom ||
       areaBoundaries.left >= componentOffset.left) {
-        console.log('jest poza granicami - true');
+        console.log('Component OUT of preview area  - true');
         return true
       } else {
-        console.log('jest w granicach preview area - false');
+        console.log('Component IN preview area - false');
         return false
       }
     }

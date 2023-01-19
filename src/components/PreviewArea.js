@@ -24,12 +24,6 @@ function PreviewArea(props) {
         top: preview.getBoundingClientRect().top,
         bottom: preview.getBoundingClientRect().bottom
       })
-    // setPreviewAreaBoundaries({
-    //     left: preview.offsetLeft,
-    //     right: preview.offsetLeft + preview.offsetWidth,
-    //     top: preview.offsetTop,
-    //     bottom: preview.offsetTop + preview.offsetHeight
-    //   })
   }
 
   useEffect(()=>{
@@ -68,7 +62,12 @@ function PreviewArea(props) {
           {renderComponents}
         </section>
         <section className={!showTab ? "codeArea showTab" : "codeArea hideTab"}>
-          <button onClick={saveToFile}>Save</button>
+          <span>
+            <button onClick={saveToFile}>Save</button>
+            <button onClick={() => navigator.clipboard.writeText(htmlCode)}> 
+              Copy
+            </button>
+          </span>
           <pre id="generatedCode" onChange={(e) => sethtmlCode(e.target.value)}>
             The code will be here
           </pre>

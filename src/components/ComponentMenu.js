@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./ComponentMenu.css";
 const ComponentMenu = (props) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -6,6 +6,11 @@ const ComponentMenu = (props) => {
   const toggleMenu = () => {
     setIsExpanded((prevAttr) => !prevAttr);
   };
+
+  useEffect(() => {
+    props.onStopComponentMove(isExpanded);
+  },[isExpanded])
+
   return (
     <div className="component-menu">
       <span onClick={toggleMenu}>click</span>

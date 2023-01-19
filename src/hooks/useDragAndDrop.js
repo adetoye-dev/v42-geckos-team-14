@@ -86,10 +86,8 @@ function useDragAndDrop(startPosition, areaBoundaries) {
       }, []);
 
     function changePosition() {
-      if( !isComponentMove) {
-        return
-      };
-
+      if (!isComponentMove) return;
+      
       const top = cursorPosition.top - (cursorPosSnap.top - componentOffsetSnap.top);
       const left = cursorPosition.left - (cursorPosSnap.left - componentOffsetSnap.left);
 
@@ -100,7 +98,7 @@ function useDragAndDrop(startPosition, areaBoundaries) {
         top: top,
         left: left
       })
-    } else if (!componentInPreviewArea) {
+      } else if (!componentInPreviewArea) {
         console.log('warunek 2');
         setComponentPosition({
           top: top,

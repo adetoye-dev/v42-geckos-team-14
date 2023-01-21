@@ -1,16 +1,27 @@
 import { useRef, useState } from "react";
 import useDragAndDrop from "../hooks/useDragAndDrop";
-import useResizer from "../hooks/useResizer";
 import ComponentMenu from "./ComponentMenu";
+import useResizable from "../hooks/useResizable";
+import "./Resizer.css";
 
 function Component(props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { setIsComponentMove, componentPosition } = useDragAndDrop(props.startPosition, props.previewAreaBoundaries);
+  const { setIsComponentMove, componentPosition } = useDragAndDrop(
+    props.startPosition,
+    props.previewAreaBoundaries
+  );
+
+  const componentRef = useRef(null);
+
+  const [resizable, componentWidth, componentHeight, activateResize] =
+    useResizable(componentRef);
 
   const myStyle = {
     position: "absolute",
     top: `${componentPosition.top}px`,
     left: `${componentPosition.left}px`,
+    width: componentWidth,
+    height: componentHeight,
   };
 
   function mouseDownHandler(e) {
@@ -18,23 +29,25 @@ function Component(props) {
     e.button === leftMouseButton && !isMenuOpen && setIsComponentMove(true);
   }
 
-  const [updateResizerRef] = useResizer(null);
-
-  const componentRef = useRef(null);
-
   function stopMoveHandler(value) {
     setIsComponentMove(false);
-    setIsMenuOpen(value)
-  };
+    setIsMenuOpen(value);
+  }
 
   return (
-    <div 
-      className={`${props.class}`}
+    <div
+      className={
+        resizable ? `${props.class} resizeable-element` : `${props.class}`
+      }
       style={myStyle}
       ref={componentRef}
       onMouseDown={(e) => mouseDownHandler(e)}
     >
-      <ComponentMenu onResizeClick={updateResizerRef} refId={componentRef} onStopComponentMove={stopMoveHandler}/>
+      <ComponentMenu
+        onResizeClick={activateResize}
+        refId={componentRef}
+        onStopComponentMove={stopMoveHandler}
+      />
       ExampleComponent
     </div>
   );

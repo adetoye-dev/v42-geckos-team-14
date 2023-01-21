@@ -1,0 +1,16 @@
+.navbar {
+    background-color: black;
+}
+.navbar-links {
+    color: white;
+}
+.navbar-toggler-icon {
+    background-color: #DCDCDC;
+}
+.navbar-toggler {
+    border-color: #DCDCDC;
+    background-color: #DCDCDC;
+}
+.me-auto {
+    padding-right: 30px;
+}

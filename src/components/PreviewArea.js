@@ -38,29 +38,21 @@ function PreviewArea(props) {
     />
   ));
 
-  return (
-    <div>
-      <span className="overlapArea">
-        <section
-          className={
-            showTab === "web" ? "previewArea showTab" : "previewArea hideTab"
-          }
-          ref={previewAreaRef}
-        >
-          {renderComponents}
-        </section>
-        <section
-          className={
-            showTab === "code" ? "codeArea showTab" : "codeArea hideTab"
-          }
-        >
-          <pre id="generatedCode" onChange={(e) => sethtmlCode(e.target.value)}>
-            The code will be here
-          </pre>
-        </section>
-      </span>
-    </div>
-  );
+  if (showTab === "web")
+    return (
+      <section className="showTab workArea" ref={previewAreaRef}>
+        {renderComponents}
+      </section>
+    );
+
+  if (showTab === "code")
+    return (
+      <section className="showTab workArea">
+        <pre id="generatedCode" onChange={(e) => sethtmlCode(e.target.value)}>
+          The code will be here
+        </pre>
+      </section>
+    );
 }
 
 export default PreviewArea;

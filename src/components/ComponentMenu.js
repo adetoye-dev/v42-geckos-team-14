@@ -9,17 +9,14 @@ const ComponentMenu = (props) => {
 
   useEffect(() => {
     props.onStopComponentMove(isExpanded);
-  },[isExpanded])
+  }, [isExpanded]);
 
   return (
     <div className="component-menu">
       <span onClick={toggleMenu}>click</span>
       <ul className="menu-list" data-visible={isExpanded}>
         <li className="menu-list-item">Edit</li>
-        <li
-          className="menu-list-item"
-          onClick={() => props.onResizeClick(props.refId)}
-        >
+        <li className="menu-list-item" onClick={props.onResizeClick}>
           Resize
         </li>
         <li className="menu-list-item">Delete</li>

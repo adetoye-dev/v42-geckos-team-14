@@ -2,12 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import "../components/Resizer.css";
 
 const useResizer = (refInput) => {
-  const [resizerRef, updateResizerRef] = useState(refInput);
+  const [resizerRef, setResizerRef] = useState(refInput);
 
   useEffect(() => {
     if (resizerRef) {
+      //get the element to be resized with a ref
       const resizeableElement = resizerRef.current;
 
+      //create the resizers for top right bottom and left
       const resizerTop = document.createElement("div");
       resizerTop.classList.add("resizer", "resizer-top");
 
@@ -20,11 +22,13 @@ const useResizer = (refInput) => {
       const resizerLeft = document.createElement("div");
       resizerLeft.classList.add("resizer", "resizer-left");
 
+      //append the resizers to the element to be resized
       resizeableElement.append(resizerTop);
       resizeableElement.append(resizerRight);
       resizeableElement.append(resizerBottom);
       resizeableElement.append(resizerLeft);
 
+      //get the current with and height of the element to be resized
       const styles = window.getComputedStyle(resizeableElement);
       let width = parseInt(styles.width, 10);
       let height = parseInt(styles.height, 10);
@@ -114,16 +118,16 @@ const useResizer = (refInput) => {
       };
 
       // Add mouse down event listener
-      // const resizerRight = refRight.current;
       resizerRight.addEventListener("mousedown", onMouseDownRightResize);
-      // const resizerTop = refTop.current;
+
       resizerTop.addEventListener("mousedown", onMouseDownTopResize);
-      // const resizerBottom = refBottom.current;
+
       resizerBottom.addEventListener("mousedown", onMouseDownBottomResize);
-      // const resizerLeft = refLeft.current;
+
       resizerLeft.addEventListener("mousedown", onMouseDownLeftResize);
 
       return () => {
+        //remove appended resizers and event listeners
         resizeableElement.removeChild(resizerRight);
         resizeableElement.removeChild(resizerTop);
         resizeableElement.removeChild(resizerBottom);
@@ -136,7 +140,7 @@ const useResizer = (refInput) => {
     }
   }, [resizerRef]);
 
-  return [updateResizerRef];
+  return [setResizerRef];
 };
 
 export default useResizer;

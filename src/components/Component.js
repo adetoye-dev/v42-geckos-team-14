@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import useDragAndDrop from "../hooks/useDragAndDrop";
 import ComponentMenu from "./ComponentMenu";
 import useResizable from "../hooks/useResizable";
+import useDelete from "../hooks/useDelete";
 import "./Resizer.css";
 
 function Component(props) {
@@ -49,6 +50,7 @@ function Component(props) {
         onResizeClick={activateResize}
         refId={componentRef}
         onStopComponentMove={stopMoveHandler}
+        onDeleteClick={useDelete(componentRef)}
       />
       ExampleComponent
     </div>

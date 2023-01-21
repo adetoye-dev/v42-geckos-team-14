@@ -19,7 +19,9 @@ const ComponentMenu = (props) => {
         <li className="menu-list-item" onClick={props.onResizeClick}>
           Resize
         </li>
-        <li className="menu-list-item">Delete</li>
+        <li className="menu-list-item" onClick={props.onDeleteClick}>
+          Delete
+        </li>
       </ul>
     </div>
   );

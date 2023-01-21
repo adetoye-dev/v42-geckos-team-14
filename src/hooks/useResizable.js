@@ -22,8 +22,28 @@ const useResizable = (ref) => {
   const onMouseMove = (e) => {
     const { clientX, clientY } = e;
     if (resizable) {
-      setComponentWidth(clientX - ref.current.offsetLeft);
-      setComponentHeight(clientY - ref.current.offsetTop);
+      let newWidth = clientX - ref.current.offsetLeft;
+      let newHeight = clientY - ref.current.offsetTop;
+      // check if the new size will overlap with any other element
+      let overlapping = false;
+      let surroundingElements = document.querySelectorAll(
+        ".surrounding-element"
+      );
+      surroundingElements.forEach((el) => {
+        if (
+          ref.current.offsetLeft + newWidth > el.offsetLeft &&
+          ref.current.offsetTop + newHeight > el.offsetTop &&
+          ref.current.offsetLeft < el.offsetLeft + el.offsetWidth &&
+          ref.current.offsetTop < el.offsetTop + el.offsetHeight
+        ) {
+          overlapping = true;
+        }
+      });
+      // if not overlapping, set the new size
+      if (!overlapping) {
+        setComponentWidth(newWidth);
+        setComponentHeight(newHeight);
+      }
     }
   };
 

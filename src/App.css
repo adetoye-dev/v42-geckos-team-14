@@ -89,3 +89,7 @@ pre {
   flex-direction: row;
   justify-content: space-between;
 }
+
+.codeMenu {
+  display: block;
+}

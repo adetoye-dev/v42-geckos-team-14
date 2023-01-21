@@ -2,24 +2,28 @@
 
 ### Developed by
 
-Elena
+Elena, Jakub, Adetoye & Carmen
 
-Jakub
-
-Adetoye
-
-Carmen
-
-### About
+### Project Description
 
 This app allows users to drag and drop HTML component and generates ready-to-use code
 
-Users without coding knowledge can create simple websites
+Users without coding knowledge can create simple/static websites
 
-### Important links
+The code generated can be copied or downloaded as .html file
+
+Styles generated are based on bootstrap. Find Bootstrap documentation [here](https://getbootstrap.com/)
+
+### How to Install/Run the Project
+
+Project can be forked from GitHub. Installing React is necessary to run the app
+
+### Tech stack
 
 [React documentation](https://reactjs.org/)
 
-[Chingu Voyage](https://www.chingu.io/)
+[Bootstrap](https://getbootstrap.com/)
 
-How to write a README -> https://www.freecodecamp.org/news/how-to-write-a-good-readme-file/
+### Credits
+
+This project was developed during Chingu Voyage 42. Learn more about [Chingu Voyage's](https://www.chingu.io/)

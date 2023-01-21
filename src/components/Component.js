@@ -37,7 +37,9 @@ function Component(props) {
   return (
     <div
       className={
-        resizable ? `${props.class} resizeable-element` : `${props.class}`
+        resizable
+          ? `${props.class} resizeable-element`
+          : `${props.class} surrounding-element`
       }
       style={myStyle}
       ref={componentRef}

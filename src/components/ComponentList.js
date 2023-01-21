@@ -34,6 +34,13 @@ function ComponentList(props) {
         </span>
       </section>
     );
+  if (showTab === "mob")
+    return (
+      <section className="codeMenu">
+        <br />
+        <h1>Mobile will be implemented after MVP is finished!</h1>
+      </section>
+    );
 }
 
 export default ComponentList;

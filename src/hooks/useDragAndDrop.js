@@ -1,8 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
 import useCursorPosition from "./useCursorPosition";
+import Context from "../components/Context";
 
 function useDragAndDrop(startPosition, areaBoundaries) {
-  const [components, setComponents] = useState([]);
+  // const [components, setComponents] = useState([]);
+  const { components, setComponents } = useContext(Context);
+  
   const currentComponentRef = useRef(null);
   const [isComponentMove, setIsComponentMove] = useState(false);
   const [componentPosition, setComponentPosition] = useState(startPosition);
@@ -11,11 +14,12 @@ function useDragAndDrop(startPosition, areaBoundaries) {
   const [componentInPreviewArea, setComponentInPreviewArea] = useState(false);
   const { cursorPosition, cursorPosSnap } = useCursorPosition();
 
-  function selectComponent(e) {
+  function addComponent(e) {
     const selectedComponent = e.target;
 
     selectedComponent.id !== "ComponentList" &&
       setComponents((prev) => [...prev, selectedComponent]);
+      console.log('components', components);
   }
 
   useEffect(() => {
@@ -136,8 +140,9 @@ function useDragAndDrop(startPosition, areaBoundaries) {
   }, [cursorPosition]);
 
   return {
-    components,
-    selectComponent,
+    // components,
+    // addComponent,
+    addComponent,
     isComponentMove,
     setIsComponentMove,
     componentPosition,

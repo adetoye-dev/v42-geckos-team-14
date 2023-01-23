@@ -1,10 +1,12 @@
-import ExampleComponentTemplate from "./ExampleComponentTemplate";
-import Context from "./Context";
 import React, { useContext } from "react";
+import Context from "./Context";
+import ExampleComponentTemplate from "./ExampleComponentTemplate";
+import useDragAndDrop from "../hooks/useDragAndDrop";
 
 function ComponentList(props) {
   const { showTab } = useContext(Context);
   const { htmlCode } = useContext(Context);
+  const { addComponent } = useDragAndDrop();
 
   async function saveToFile() {
     let myBlob = new Blob([htmlCode], { type: "text/document" });
@@ -17,7 +19,7 @@ function ComponentList(props) {
 
   if (showTab === "web")
     return (
-      <section id="ComponentList" onClick={props.onSelectComponent}>
+      <section id="ComponentList" onClick={(e) => addComponent(e)}>
         <ExampleComponentTemplate className="c1" id="c1" text="Component 1" />
         <div className="c2">Component 2</div>
         <div className="c3">Component 3</div>

@@ -3,6 +3,7 @@ import { useState, createContext } from "react";
 const Context = createContext();
 
 export function ContextProvider(props) {
+  const [components, setComponents] = useState([]);
   const [htmlCode, sethtmlCode] = useState("The code will be here");
   const [showTab, setShowTab] = useState("web");
   const [darkLightMode, setDarkLightMode] = useState(true);
@@ -10,6 +11,8 @@ export function ContextProvider(props) {
   return (
     <Context.Provider
       value={{
+        components,
+        setComponents,
         htmlCode,
         sethtmlCode,
         showTab,

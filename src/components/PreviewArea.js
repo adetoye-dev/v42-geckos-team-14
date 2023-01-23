@@ -3,6 +3,7 @@ import Component from "./Component";
 import Context from "./Context";
 
 function PreviewArea(props) {
+  const { components } = useContext(Context);
   const { sethtmlCode } = useContext(Context);
   const { showTab } = useContext(Context);
   const [previewAreaBoundaries, setPreviewAreaBoundaries] = useState(null);
@@ -29,7 +30,7 @@ function PreviewArea(props) {
     };
   }, []);
 
-  const renderComponents = props.components.map((component, index) => (
+  const renderComponents = components.map((component, index) => (
     <Component
       class={component.className}
       startPosition={{ top: component.offsetTop, left: component.offsetLeft }}

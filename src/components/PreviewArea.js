@@ -1,12 +1,11 @@
-import React, { useEffect, useRef, useState, useContext } from "react";
-import Component from "./Component";
+import React, { useEffect, useRef, useContext } from "react";
 import Context from "./Context";
 
 function PreviewArea(props) {
   const { components } = useContext(Context);
   const { sethtmlCode } = useContext(Context);
   const { showTab } = useContext(Context);
-  const [previewAreaBoundaries, setPreviewAreaBoundaries] = useState(null);
+  const { setPreviewAreaBoundaries } = useContext(Context);
   const previewAreaRef = useRef(null);
 
   function checkPreviewBoundaries() {
@@ -30,15 +29,8 @@ function PreviewArea(props) {
     };
   }, []);
 
-  const renderComponents = components.map((component, index) => (
-    <Component
-      class={component.className}
-      startPosition={{ top: component.offsetTop, left: component.offsetLeft }}
-      previewAreaBoundaries={previewAreaBoundaries}
-      key={`${component.id}${index}`}
-    />
-  ));
-
+  const renderComponents = components.map((component) => component);
+  
   if (showTab === "web")
     return (
       <section className="showTab workArea" ref={previewAreaRef}>

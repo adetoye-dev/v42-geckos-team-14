@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState, useContext } from "react";
 import useCursorPosition from "./useCursorPosition";
+import Component from "../components/Component";
 import Context from "../components/Context";
 
-function useDragAndDrop(startPosition, areaBoundaries) {
-  // const [components, setComponents] = useState([]);
-  const { components, setComponents } = useContext(Context);
+function useDragAndDrop(startPosition) {
+  const { setComponents } = useContext(Context);
+  const { previewAreaBoundaries } = useContext(Context);
   
   const currentComponentRef = useRef(null);
   const [isComponentMove, setIsComponentMove] = useState(false);
@@ -17,9 +18,17 @@ function useDragAndDrop(startPosition, areaBoundaries) {
   function addComponent(e) {
     const selectedComponent = e.target;
 
-    selectedComponent.id !== "ComponentList" &&
-      setComponents((prev) => [...prev, selectedComponent]);
-      console.log('components', components);
+    if(selectedComponent.id !== "ComponentList") {
+      const component = 
+      <Component
+        class={selectedComponent.className}
+        startPosition={{ top: previewAreaBoundaries.top, left: previewAreaBoundaries.left }}
+        // startPosition={{ top: selectedComponent.offsetTop, left: selectedComponent.offsetLeft }}
+        key={`${selectedComponent.id}${Math.random()}`}
+      />
+
+    setComponents((prev) => [...prev, component]);
+    }
   }
 
   useEffect(() => {
@@ -97,7 +106,7 @@ function useDragAndDrop(startPosition, areaBoundaries) {
     const left =
       cursorPosition.left - (cursorPosSnap.left - componentOffsetSnap.left);
 
-    if (outPreviewArea(areaBoundaries) === false) {
+    if (outPreviewArea(previewAreaBoundaries) === false) {
       console.log("Condition 1");
       setComponentInPreviewArea(true);
       setComponentPosition({

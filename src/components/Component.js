@@ -8,8 +8,7 @@ import "./Resizer.css";
 function Component(props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { setIsComponentMove, componentPosition } = useDragAndDrop(
-    props.startPosition,
-    props.previewAreaBoundaries
+    props.startPosition
   );
 
   const componentRef = useRef(null);

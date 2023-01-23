@@ -7,6 +7,7 @@ export function ContextProvider(props) {
   const [htmlCode, sethtmlCode] = useState("The code will be here");
   const [showTab, setShowTab] = useState("web");
   const [darkLightMode, setDarkLightMode] = useState(true);
+  const [previewAreaBoundaries, setPreviewAreaBoundaries] = useState({});
 
   return (
     <Context.Provider
@@ -19,6 +20,8 @@ export function ContextProvider(props) {
         setShowTab,
         darkLightMode,
         setDarkLightMode,
+        previewAreaBoundaries,
+        setPreviewAreaBoundaries
       }}
     >
       {props.children}

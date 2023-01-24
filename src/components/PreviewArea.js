@@ -15,6 +15,8 @@ function PreviewArea(props) {
       right: preview.offsetLeft + preview.offsetWidth,
       top: preview.offsetTop,
       bottom: preview.offsetTop + preview.offsetHeight,
+      middleY: preview.offsetTop + (preview.offsetHeight / 2),
+      middleX: preview.offsetLeft + (preview.offsetWidth / 2)
     });
   }
 

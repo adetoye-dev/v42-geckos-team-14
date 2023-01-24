@@ -86,7 +86,6 @@ function useDragAndDrop(startPosition) {
     cursorPosition.top - (cursorPosSnap.top - componentOffsetSnap.top);
     const left =
     cursorPosition.left - (cursorPosSnap.left - componentOffsetSnap.left);
-    console.log(top, left);
 
     if (outPreviewArea(previewAreaBoundaries) === false) {
       // console.log("Condition 1");

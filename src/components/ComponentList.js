@@ -21,8 +21,8 @@ function ComponentList(props) {
     return (
       <section id="ComponentList" onClick={(e) => addComponent(e)}>
         <ExampleComponentTemplate className="c1" id="c1" text="Component 1" />
-        <div className="c2">Component 2</div>
-        <div className="c3">Component 3</div>
+        <div className="c2" id="c2">Component 2</div>
+        <div className="c3" id="c3">Component 3</div>
       </section>
     );
   if (showTab === "code")

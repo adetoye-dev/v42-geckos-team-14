@@ -15,20 +15,27 @@ function useDragAndDrop(startPosition) {
   const [componentInPreviewArea, setComponentInPreviewArea] = useState(false);
   const { cursorPosition, cursorPosSnap } = useCursorPosition();
 
-  function addComponent(e) {
+  function createComponent(e) {
     const selectedComponent = e.target;
+    const id = `${selectedComponent.id}${Math.random()}`;
 
     if(selectedComponent.id !== "ComponentList") {
-      const component = 
+      return (
       <Component
-        class={selectedComponent.className}
-        startPosition={{ top: previewAreaBoundaries.top, left: previewAreaBoundaries.left }}
+        class = {selectedComponent.className}
+        startPosition = {{ top: previewAreaBoundaries.top, left: previewAreaBoundaries.left }}
         // startPosition={{ top: selectedComponent.offsetTop, left: selectedComponent.offsetLeft }}
-        key={`${selectedComponent.id}${Math.random()}`}
+        id = {id}
+        key = {id}
       />
-
-    setComponents((prev) => [...prev, component]);
+      )
     }
+  }
+
+  function addComponent(e) {
+    const component = createComponent(e);
+    
+    setComponents((prev) => [...prev, component]);
   }
 
   useEffect(() => {
@@ -107,14 +114,14 @@ function useDragAndDrop(startPosition) {
       cursorPosition.left - (cursorPosSnap.left - componentOffsetSnap.left);
 
     if (outPreviewArea(previewAreaBoundaries) === false) {
-      console.log("Condition 1");
+      // console.log("Condition 1");
       setComponentInPreviewArea(true);
       setComponentPosition({
         top: top,
         left: left,
       });
     } else if (!componentInPreviewArea) {
-      console.log("Condition 2");
+      // console.log("Condition 2");
       setComponentPosition({
         top: top,
         left: left,
@@ -136,10 +143,10 @@ function useDragAndDrop(startPosition) {
       areaBoundaries.bottom <= componentOffset.bottom ||
       areaBoundaries.left >= componentOffset.left
     ) {
-      console.log("Component OUT of preview area  - true");
+      // console.log("Component OUT of preview area  - true");
       return true;
     } else {
-      console.log("Component IN preview area - false");
+      // console.log("Component IN preview area - false");
       return false;
     }
   }
@@ -149,13 +156,12 @@ function useDragAndDrop(startPosition) {
   }, [cursorPosition]);
 
   return {
-    // components,
-    // addComponent,
     addComponent,
     isComponentMove,
     setIsComponentMove,
     componentPosition,
     setComponentPosition,
+    // deleteComponent,
   };
 }
 

@@ -7,9 +7,8 @@ import "./Resizer.css";
 
 function Component(props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { setIsComponentMove, componentPosition } = useDragAndDrop(
-    props.startPosition
-  );
+  const { setIsComponentMove, componentPosition } = useDragAndDrop(props.startPosition);
+  const deleteComponent = useDelete()
 
   const componentRef = useRef(null);
 
@@ -34,6 +33,10 @@ function Component(props) {
     setIsMenuOpen(value);
   }
 
+  function deleteClickHandler(id) {
+    deleteComponent(id)
+  }
+
   return (
     <div
       className={
@@ -49,7 +52,8 @@ function Component(props) {
         onResizeClick={activateResize}
         refId={componentRef}
         onStopComponentMove={stopMoveHandler}
-        onDeleteClick={useDelete(componentRef)}
+        // onDeleteClick={useDelete(componentRef)}
+        onDeleteClick={() => deleteClickHandler(props.id)}
       />
       ExampleComponent
     </div>

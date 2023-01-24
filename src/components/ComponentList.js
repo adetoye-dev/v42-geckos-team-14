@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import Context from "./Context";
 import ExampleComponentTemplate from "./ExampleComponentTemplate";
-import useDragAndDrop from "../hooks/useDragAndDrop";
+import useAddComponent from "../hooks/useAddComponent";
 
 function ComponentList(props) {
   const { showTab } = useContext(Context);
   const { htmlCode } = useContext(Context);
-  const { addComponent } = useDragAndDrop();
+  const { addComponent } = useAddComponent();
 
   async function saveToFile() {
     let myBlob = new Blob([htmlCode], { type: "text/document" });

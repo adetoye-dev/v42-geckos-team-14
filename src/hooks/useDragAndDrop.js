@@ -1,10 +1,8 @@
 import { useEffect, useRef, useState, useContext } from "react";
 import useCursorPosition from "./useCursorPosition";
-import Component from "../components/Component";
 import Context from "../components/Context";
 
 function useDragAndDrop(startPosition) {
-  const { setComponents } = useContext(Context);
   const { previewAreaBoundaries } = useContext(Context);
   
   const currentComponentRef = useRef(null);
@@ -14,29 +12,6 @@ function useDragAndDrop(startPosition) {
   const [componentOffset, setComponentOffset] = useState({});
   const [componentInPreviewArea, setComponentInPreviewArea] = useState(false);
   const { cursorPosition, cursorPosSnap } = useCursorPosition();
-
-  function createComponent(e) {
-    const selectedComponent = e.target;
-    const id = `${selectedComponent.id}${Math.random()}`;
-
-    if(selectedComponent.id !== "ComponentList") {
-      return (
-      <Component
-        class = {selectedComponent.className}
-        startPosition = {{ top: previewAreaBoundaries.top, left: previewAreaBoundaries.left }}
-        // startPosition={{ top: selectedComponent.offsetTop, left: selectedComponent.offsetLeft }}
-        id = {id}
-        key = {id}
-      />
-      )
-    }
-  }
-
-  function addComponent(e) {
-    const component = createComponent(e);
-    
-    setComponents((prev) => [...prev, component]);
-  }
 
   useEffect(() => {
     window.addEventListener("mouseup", () => {
@@ -156,12 +131,10 @@ function useDragAndDrop(startPosition) {
   }, [cursorPosition]);
 
   return {
-    addComponent,
     isComponentMove,
     setIsComponentMove,
     componentPosition,
     setComponentPosition,
-    // deleteComponent,
   };
 }
 

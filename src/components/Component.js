@@ -2,13 +2,13 @@ import { useRef, useState } from "react";
 import useDragAndDrop from "../hooks/useDragAndDrop";
 import ComponentMenu from "./ComponentMenu";
 import useResizable from "../hooks/useResizable";
-import useDelete from "../hooks/useDelete";
+import useDeleteComponent from "../hooks/useDeleteComponent";
 import "./Resizer.css";
 
 function Component(props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { setIsComponentMove, componentPosition } = useDragAndDrop(props.startPosition);
-  const deleteComponent = useDelete()
+  const deleteComponent = useDeleteComponent()
 
   const componentRef = useRef(null);
 

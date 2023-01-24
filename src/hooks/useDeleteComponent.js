@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Context from "../components/Context";
 
-function useDelete(props) {
+function useDeleteComponent(props) {
   const { setComponents } = useContext(Context);
   // all components that we add must be added to a list with their position in the code.
   // when we delete a component, we delete it from the list
@@ -15,4 +15,4 @@ function useDelete(props) {
   return deleteComponent;
 }
 
-export default useDelete;
+export default useDeleteComponent;

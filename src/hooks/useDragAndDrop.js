@@ -29,8 +29,8 @@ function useDragAndDrop(startPosition) {
 
   useEffect(() => {
     function setStartPosition(event) {
-      const top = event.target.getBoundingClientRect().top;
-      const left = event.target.getBoundingClientRect().left;
+      const top = event.target.offsetTop;
+      const left = event.target.offsetLeft;
 
       setComponentOffsetSnap({
         top: top,
@@ -54,10 +54,10 @@ function useDragAndDrop(startPosition) {
 
   useEffect(() => {
     function currentComponentOffset(component) {
-      const top = component.getBoundingClientRect().top;
-      const right = component.getBoundingClientRect().right;
-      const bottom = component.getBoundingClientRect().bottom;
-      const left = component.getBoundingClientRect().left;
+      const top = component.offsetTop;
+      const right = component.offsetLeft + component.offsetWidth;
+      const bottom = component.offsetTop + component.offsetHeight;
+      const left = component.offsetLeft;
 
       setComponentOffset({
         top: top,
@@ -82,11 +82,11 @@ function useDragAndDrop(startPosition) {
 
   function changePosition() {
     if (!isComponentMove) return;
-
     const top =
-      cursorPosition.top - (cursorPosSnap.top - componentOffsetSnap.top);
+    cursorPosition.top - (cursorPosSnap.top - componentOffsetSnap.top);
     const left =
-      cursorPosition.left - (cursorPosSnap.left - componentOffsetSnap.left);
+    cursorPosition.left - (cursorPosSnap.left - componentOffsetSnap.left);
+    console.log(top, left);
 
     if (outPreviewArea(previewAreaBoundaries) === false) {
       // console.log("Condition 1");

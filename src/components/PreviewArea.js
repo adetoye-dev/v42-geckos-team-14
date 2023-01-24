@@ -11,10 +11,10 @@ function PreviewArea(props) {
   function checkPreviewBoundaries() {
     const preview = previewAreaRef.current;
     setPreviewAreaBoundaries({
-      left: preview.getBoundingClientRect().left,
-      right: preview.getBoundingClientRect().right,
-      top: preview.getBoundingClientRect().top,
-      bottom: preview.getBoundingClientRect().bottom,
+      left: preview.offsetLeft,
+      right: preview.offsetLeft + preview.offsetWidth,
+      top: preview.offsetTop,
+      bottom: preview.offsetTop + preview.offsetHeight,
     });
   }
 

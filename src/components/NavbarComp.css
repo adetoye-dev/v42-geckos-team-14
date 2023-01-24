@@ -3,6 +3,10 @@
 }
 .navbar-links {
     color: white;
+    cursor: pointer;
+}
+.navbar-links:hover {
+    color: white;
 }
 .navbar-toggler-icon {
     background-color: #DCDCDC;
@@ -13,4 +17,14 @@
 }
 .me-auto {
     padding-right: 30px;
+}
+.container {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.links-right-side {
+    margin: 10px;
+}
+div {
+    margin: 0;
 }

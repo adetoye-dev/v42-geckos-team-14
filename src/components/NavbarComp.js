@@ -12,29 +12,29 @@ function BasicExample() {
   return (
     <Navbar expand="lg" className="navbar">
       <Container>
-        <Navbar.Brand href="#home" className="navbar-links">
+        <Navbar.Brand href="/" className="navbar-links">
           Drag&Drop
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" className="toggler" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto position-absolute end-0">
             <Nav.Link
-              href="#home"
-              className="navbar-links web"
+              href="/"
+              className="navbar-links links-right-side fw-bold"
               onClick={() => setShowTab("web")}
             >
               Web
             </Nav.Link>
             <Nav.Link
               href="#link"
-              className="navbar-links"
+              className="navbar-links links-right-side opacity-75"
               onClick={() => setShowTab("mob")}
             >
               Mobile
             </Nav.Link>
             <Nav.Link
               href="#link"
-              className="navbar-links"
+              className="navbar-links links-right-side opacity-75"
               onClick={() => setShowTab("code")}
             >
               Code

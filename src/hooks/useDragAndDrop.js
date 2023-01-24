@@ -10,8 +10,9 @@ function useDragAndDrop(startPosition) {
   const [componentPosition, setComponentPosition] = useState(startPosition);
   const [componentOffsetSnap, setComponentOffsetSnap] = useState(startPosition);
   const [componentOffset, setComponentOffset] = useState({});
-  const [componentInPreviewArea, setComponentInPreviewArea] = useState(false);
-  const { cursorPosition, cursorPosSnap } = useCursorPosition();
+  const { cursorPosition, cursorPosSnap, cursorDirectionY,
+    cursorDirectionX } = useCursorPosition();
+ 
 
   useEffect(() => {
     window.addEventListener("mouseup", () => {
@@ -80,48 +81,66 @@ function useDragAndDrop(startPosition) {
     };
   }, []);
 
-  function changePosition() {
-    if (!isComponentMove) return;
-    const top =
-    cursorPosition.top - (cursorPosSnap.top - componentOffsetSnap.top);
-    const left =
-    cursorPosition.left - (cursorPosSnap.left - componentOffsetSnap.left);
-
-    if (outPreviewArea(previewAreaBoundaries) === false) {
-      // console.log("Condition 1");
-      setComponentInPreviewArea(true);
-      setComponentPosition({
-        top: top,
-        left: left,
-      });
-    } else if (!componentInPreviewArea) {
-      // console.log("Condition 2");
-      setComponentPosition({
-        top: top,
-        left: left,
-      });
+  function cursorPosInComponent() {
+    return {
+      top : cursorPosition.top - (cursorPosSnap.top - componentOffsetSnap.top),
+      left : cursorPosition.left - (cursorPosSnap.left - componentOffsetSnap.left)
     }
   }
 
-  function outPreviewArea(areaBoundaries) {
-    //  return areaBoundaries.top < componentOffset.top ||
-    //   areaBoundaries.right < componentOffset.right ||
-    //   areaBoundaries.bottom < componentOffset.bottom ||
-    //   areaBoundaries.left > componentOffset.left;
+  function changePosition() {
+    if (limitPosInPreview(previewAreaBoundaries)) return;
 
-    if (!areaBoundaries) return;
+    setComponentPosition( cursorPosInComponent() );
+  }
+
+  function limitPosInPreview(areaBoundaries) {
+    if (
+      (componentOffset.top <= areaBoundaries.top && cursorDirectionY === 'up') ||
+       (componentOffset.top < areaBoundaries.top) ||
+       (componentOffset.top === areaBoundaries.top && 
+        cursorPosition.top - currentComponentRef.current.offsetHeight / 2  < areaBoundaries.top)
+      ) {
+      setComponentPosition((prev) => ( 
+        {...prev, top : previewAreaBoundaries.top
+      }))
+      return true
+    }
 
     if (
-      areaBoundaries.top >= componentOffset.top ||
-      areaBoundaries.right <= componentOffset.right ||
-      areaBoundaries.bottom <= componentOffset.bottom ||
-      areaBoundaries.left >= componentOffset.left
-    ) {
-      // console.log("Component OUT of preview area  - true");
-      return true;
-    } else {
-      // console.log("Component IN preview area - false");
-      return false;
+      (componentOffset.bottom >= areaBoundaries.bottom && cursorDirectionY === 'down') ||
+      (componentOffset.bottom > areaBoundaries.bottom) ||
+      (componentOffset.bottom === areaBoundaries.bottom && 
+        cursorPosition.top + currentComponentRef.current.offsetHeight  > areaBoundaries.bottom)
+      ) {
+      setComponentPosition((prev) => ( 
+        {...prev, top : (previewAreaBoundaries.bottom - currentComponentRef.current.offsetHeight)
+      }))
+      return true
+    }
+
+    if (
+        (componentOffset.left <= areaBoundaries.left && cursorDirectionX === 'left') ||
+         (componentOffset.left < areaBoundaries.left) ||
+         (componentOffset.left === areaBoundaries.left && 
+          cursorPosition.left - currentComponentRef.current.offsetWidth / 2 < areaBoundaries.left)
+      ) {
+      setComponentPosition((prev) => ( 
+        {...prev, left : previewAreaBoundaries.left}
+        ))
+      return true
+    }
+
+    if (
+      (componentOffset.right >= areaBoundaries.right && cursorDirectionX === 'right') || 
+      (componentOffset.right > areaBoundaries.right) || 
+      (componentOffset.right === areaBoundaries.right &&
+        cursorPosition.left + currentComponentRef.current.offsetWidth / 2 > areaBoundaries.right)
+       )  {
+      setComponentPosition((prev) => ( 
+        {...prev, left : (previewAreaBoundaries.right - currentComponentRef.current.offsetWidth)}
+        ))
+      return true
     }
   }
 

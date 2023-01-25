@@ -2,15 +2,13 @@ import { useRef, useState } from "react";
 import useDragAndDrop from "../hooks/useDragAndDrop";
 import ComponentMenu from "./ComponentMenu";
 import useResizable from "../hooks/useResizable";
-import useDelete from "../hooks/useDelete";
+import useDeleteComponent from "../hooks/useDeleteComponent";
 import "./Resizer.css";
 
 function Component(props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { setIsComponentMove, componentPosition } = useDragAndDrop(
-    props.startPosition,
-    props.previewAreaBoundaries
-  );
+  const { setIsComponentMove, componentPosition } = useDragAndDrop(props.startPosition);
+  const deleteComponent = useDeleteComponent()
 
   const componentRef = useRef(null);
 
@@ -35,6 +33,10 @@ function Component(props) {
     setIsMenuOpen(value);
   }
 
+  function deleteClickHandler(id) {
+    deleteComponent(id)
+  }
+
   return (
     <div
       className={
@@ -50,7 +52,8 @@ function Component(props) {
         onResizeClick={activateResize}
         refId={componentRef}
         onStopComponentMove={stopMoveHandler}
-        onDeleteClick={useDelete(componentRef)}
+        // onDeleteClick={useDelete(componentRef)}
+        onDeleteClick={() => deleteClickHandler(props.id)}
       />
       ExampleComponent
     </div>

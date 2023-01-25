@@ -1,22 +1,18 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
 import useCursorPosition from "./useCursorPosition";
+import Context from "../components/Context";
 
-function useDragAndDrop(startPosition, areaBoundaries) {
-  const [components, setComponents] = useState([]);
+function useDragAndDrop(startPosition) {
+  const { previewAreaBoundaries } = useContext(Context);
+  
   const currentComponentRef = useRef(null);
   const [isComponentMove, setIsComponentMove] = useState(false);
   const [componentPosition, setComponentPosition] = useState(startPosition);
   const [componentOffsetSnap, setComponentOffsetSnap] = useState(startPosition);
   const [componentOffset, setComponentOffset] = useState({});
-  const [componentInPreviewArea, setComponentInPreviewArea] = useState(false);
-  const { cursorPosition, cursorPosSnap } = useCursorPosition();
-
-  function selectComponent(e) {
-    const selectedComponent = e.target;
-
-    selectedComponent.id !== "ComponentList" &&
-      setComponents((prev) => [...prev, selectedComponent]);
-  }
+  const { cursorPosition, cursorPosSnap, cursorDirectionY,
+    cursorDirectionX } = useCursorPosition();
+ 
 
   useEffect(() => {
     window.addEventListener("mouseup", () => {
@@ -34,8 +30,8 @@ function useDragAndDrop(startPosition, areaBoundaries) {
 
   useEffect(() => {
     function setStartPosition(event) {
-      const top = event.target.getBoundingClientRect().top;
-      const left = event.target.getBoundingClientRect().left;
+      const top = event.target.offsetTop;
+      const left = event.target.offsetLeft;
 
       setComponentOffsetSnap({
         top: top,
@@ -59,10 +55,10 @@ function useDragAndDrop(startPosition, areaBoundaries) {
 
   useEffect(() => {
     function currentComponentOffset(component) {
-      const top = component.getBoundingClientRect().top;
-      const right = component.getBoundingClientRect().right;
-      const bottom = component.getBoundingClientRect().bottom;
-      const left = component.getBoundingClientRect().left;
+      const top = component.offsetTop;
+      const right = component.offsetLeft + component.offsetWidth;
+      const bottom = component.offsetTop + component.offsetHeight;
+      const left = component.offsetLeft;
 
       setComponentOffset({
         top: top,
@@ -85,49 +81,66 @@ function useDragAndDrop(startPosition, areaBoundaries) {
     };
   }, []);
 
-  function changePosition() {
-    if (!isComponentMove) return;
-
-    const top =
-      cursorPosition.top - (cursorPosSnap.top - componentOffsetSnap.top);
-    const left =
-      cursorPosition.left - (cursorPosSnap.left - componentOffsetSnap.left);
-
-    if (outPreviewArea(areaBoundaries) === false) {
-      console.log("Condition 1");
-      setComponentInPreviewArea(true);
-      setComponentPosition({
-        top: top,
-        left: left,
-      });
-    } else if (!componentInPreviewArea) {
-      console.log("Condition 2");
-      setComponentPosition({
-        top: top,
-        left: left,
-      });
+  function cursorPosInComponent() {
+    return {
+      top : cursorPosition.top - (cursorPosSnap.top - componentOffsetSnap.top),
+      left : cursorPosition.left - (cursorPosSnap.left - componentOffsetSnap.left)
     }
   }
 
-  function outPreviewArea(areaBoundaries) {
-    //  return areaBoundaries.top < componentOffset.top ||
-    //   areaBoundaries.right < componentOffset.right ||
-    //   areaBoundaries.bottom < componentOffset.bottom ||
-    //   areaBoundaries.left > componentOffset.left;
+  function changePosition() {
+    if (limitPosInPreview(previewAreaBoundaries)) return;
 
-    if (!areaBoundaries) return;
+    setComponentPosition( cursorPosInComponent() );
+  }
+
+  function limitPosInPreview(areaBoundaries) {
+    if (
+      (componentOffset.top <= areaBoundaries.top && cursorDirectionY === 'up') ||
+       (componentOffset.top < areaBoundaries.top) ||
+       (componentOffset.top === areaBoundaries.top && 
+        cursorPosition.top - currentComponentRef.current.offsetHeight / 2  < areaBoundaries.top)
+      ) {
+      setComponentPosition((prev) => ( 
+        {...prev, top : previewAreaBoundaries.top
+      }))
+      return true
+    }
 
     if (
-      areaBoundaries.top >= componentOffset.top ||
-      areaBoundaries.right <= componentOffset.right ||
-      areaBoundaries.bottom <= componentOffset.bottom ||
-      areaBoundaries.left >= componentOffset.left
-    ) {
-      console.log("Component OUT of preview area  - true");
-      return true;
-    } else {
-      console.log("Component IN preview area - false");
-      return false;
+      (componentOffset.bottom >= areaBoundaries.bottom && cursorDirectionY === 'down') ||
+      (componentOffset.bottom > areaBoundaries.bottom) ||
+      (componentOffset.bottom === areaBoundaries.bottom && 
+        cursorPosition.top + currentComponentRef.current.offsetHeight  > areaBoundaries.bottom)
+      ) {
+      setComponentPosition((prev) => ( 
+        {...prev, top : (previewAreaBoundaries.bottom - currentComponentRef.current.offsetHeight)
+      }))
+      return true
+    }
+
+    if (
+        (componentOffset.left <= areaBoundaries.left && cursorDirectionX === 'left') ||
+         (componentOffset.left < areaBoundaries.left) ||
+         (componentOffset.left === areaBoundaries.left && 
+          cursorPosition.left - currentComponentRef.current.offsetWidth / 2 < areaBoundaries.left)
+      ) {
+      setComponentPosition((prev) => ( 
+        {...prev, left : previewAreaBoundaries.left}
+        ))
+      return true
+    }
+
+    if (
+      (componentOffset.right >= areaBoundaries.right && cursorDirectionX === 'right') || 
+      (componentOffset.right > areaBoundaries.right) || 
+      (componentOffset.right === areaBoundaries.right &&
+        cursorPosition.left + currentComponentRef.current.offsetWidth / 2 > areaBoundaries.right)
+       )  {
+      setComponentPosition((prev) => ( 
+        {...prev, left : (previewAreaBoundaries.right - currentComponentRef.current.offsetWidth)}
+        ))
+      return true
     }
   }
 
@@ -136,8 +149,6 @@ function useDragAndDrop(startPosition, areaBoundaries) {
   }, [cursorPosition]);
 
   return {
-    components,
-    selectComponent,
     isComponentMove,
     setIsComponentMove,
     componentPosition,

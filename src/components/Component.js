@@ -7,8 +7,10 @@ import "./Resizer.css";
 
 function Component(props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { setIsComponentMove, componentPosition } = useDragAndDrop(props.startPosition);
-  const deleteComponent = useDeleteComponent()
+  const { setIsComponentMove, componentPosition } = useDragAndDrop(
+    props.startPosition
+  );
+  const deleteComponent = useDeleteComponent();
 
   const componentRef = useRef(null);
 
@@ -34,11 +36,12 @@ function Component(props) {
   }
 
   function deleteClickHandler(id) {
-    deleteComponent(id)
+    deleteComponent(id);
   }
 
   return (
     <div
+      id={props.id}
       className={
         resizable
           ? `${props.class} resizeable-element`

@@ -1,0 +1,66 @@
+// Components data will be here
+
+const allcomponents = [
+  {
+    id: 1,
+    name: "bullet list",
+    tag: "ul",
+    appliedOnlyOnce: false,
+    canBeEdited: true,
+    editText: "nonEditable",
+    editSubtext: ["Sample bullet 1", "", "", ""],
+    editImg: "nonEditable",
+  },
+  {
+    id: 2,
+    name: "button",
+    tag: "button",
+    appliedOnlyOnce: false,
+    canBeEdited: true,
+    editText: "Sample button",
+    editSubtext: "nonEditable",
+    editImg: "nonEditable",
+  },
+  {
+    id: 3,
+    name: "social media link",
+    tag: "a",
+    appliedOnlyOnce: false,
+    canBeEdited: true,
+    editText: "Sample social link",
+    editSubtext: "nonEditable",
+    editImg: "nonEditable",
+  },
+  {
+    id: 4,
+    name: "header with logo",
+    tag: "header",
+    appliedOnlyOnce: true,
+    canBeEdited: true,
+    editText: "Sample header text",
+    editSubtext: "nonEditable",
+    editImg: "editable",
+  },
+  {
+    id: 5,
+    name: "Divide line",
+    tag: "hr",
+    appliedOnlyOnce: false,
+    canBeEdited: false,
+    editText: "nonEditable",
+    editSubtext: "nonEditable",
+    editImg: "nonEditable",
+  },
+  {
+    id: 6,
+    name: "go up arrow",
+    tag: "span",
+    appliedOnlyOnce: false,
+    canBeEdited: false,
+    editText: "nonEditable",
+    editSubtext: "nonEditable",
+    editImg: "nonEditable",
+  },
+];
+
+export default allcomponents;

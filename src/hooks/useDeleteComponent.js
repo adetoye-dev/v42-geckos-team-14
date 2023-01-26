@@ -7,7 +7,6 @@ function useDeleteComponent(props) {
   // when we delete a component, we delete it from the list
   // when we move a component, we move it inside the list
 
-
   function deleteComponent(id) {
       setComponents(components => components.filter((component) => component.props.id !== id))
     }

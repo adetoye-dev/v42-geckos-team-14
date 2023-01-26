@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import Context from "./Context";
 import ExampleComponentTemplate from "./ExampleComponentTemplate";
 import useAddComponent from "../hooks/useAddComponent";
+import allcomponents from "../allcomponents"; // List of components to render
 
 function ComponentList(props) {
   const { showTab } = useContext(Context);

@@ -24,7 +24,7 @@ function useAddComponent() {
     const id = `${selectedComponent.id}${Math.random()}`;
     const middleOfPreview = {
       top: calculateTopOffset(),
-      left: 200,
+      left: previewAreaBoundaries.middleX - e.target.offsetWidth / 2,
     };
 
     if (selectedComponent.id !== "ComponentList") {

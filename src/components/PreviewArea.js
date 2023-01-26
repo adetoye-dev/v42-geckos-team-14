@@ -15,8 +15,7 @@ function PreviewArea(props) {
       right: preview.offsetLeft + preview.offsetWidth,
       top: preview.offsetTop,
       bottom: preview.offsetTop + preview.offsetHeight,
-      middleY: preview.offsetTop + (preview.offsetHeight / 2),
-      middleX: preview.offsetLeft + (preview.offsetWidth / 2)
+      top: preview.offsetTop,
     });
   }
 
@@ -32,7 +31,7 @@ function PreviewArea(props) {
   }, []);
 
   const renderComponents = components.map((component) => component);
-  
+
   if (showTab === "web")
     return (
       <section className="showTab workArea" ref={previewAreaRef}>

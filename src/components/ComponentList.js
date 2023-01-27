@@ -5,6 +5,7 @@ import useAddComponent from "../hooks/useAddComponent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImages } from "@fortawesome/free-solid-svg-icons"; 
 import { faTextHeight } from "@fortawesome/free-solid-svg-icons";
+import SearchBar from "./SearchBar";
 import allcomponents from "../allcomponents"; // List of components to render
 
 function ComponentList(props) {
@@ -24,6 +25,7 @@ function ComponentList(props) {
   if (showTab === "web")
     return (
       <section id="ComponentList" onClick={(e) => addComponent(e)}>
+        <SearchBar />
         <ExampleComponentTemplate className="c1" id="c1" text="Navbar" />
         <br />
         <div className="c2 fs-5 text-center" id="c2">

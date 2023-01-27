@@ -29,27 +29,29 @@ div {
 .c1 {
   position: relative;
   display: block;
-  background-color: rgb(200, 21, 21);
+  background-color: #D9D9D9;
   padding: 20px 150px;
   user-select: none;
+  border-radius: 4px;
 }
 
 .c2 {
   position: relative;
   display: block;
-  background-color: rgb(21, 200, 54);
-  padding: 50px 60px;
+  background-color: #D9D9D9;
+  padding: 30px 40px;
   user-select: none;
+  border-radius: 4px;
 }
 
 .c3 {
   position: relative;
   display: block;
-  background-color: rgb(97, 68, 228);
-  padding: 70px 100px;
+  background-color: #D9D9D9;
+  padding: 30px 48px;
   user-select: none;
+  border-radius: 4px;
 }
-
 pre {
   width: 1100px;
   height: 95vh;

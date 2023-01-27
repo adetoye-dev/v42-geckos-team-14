@@ -2,6 +2,9 @@ import React, { useContext } from "react";
 import Context from "./Context";
 import ExampleComponentTemplate from "./ExampleComponentTemplate";
 import useAddComponent from "../hooks/useAddComponent";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faImages } from "@fortawesome/free-solid-svg-icons"; 
+import { faTextHeight } from "@fortawesome/free-solid-svg-icons";
 import allcomponents from "../allcomponents"; // List of components to render
 
 function ComponentList(props) {
@@ -21,9 +24,19 @@ function ComponentList(props) {
   if (showTab === "web")
     return (
       <section id="ComponentList" onClick={(e) => addComponent(e)}>
-        <ExampleComponentTemplate className="c1" id="c1" text="Component 1" />
-        <div className="c2" id="c2">Component 2</div>
-        <div className="c3" id="c3">Component 3</div>
+        <ExampleComponentTemplate className="c1" id="c1" text="Navbar" />
+        <br />
+        <div className="c2 fs-5 text-center" id="c2">
+          <FontAwesomeIcon icon={faImages} size="2x"></FontAwesomeIcon>
+          <br />
+          Image
+        </div>
+        <br />
+        <div className="c3 fs-5 text-center" id="c3">
+          <FontAwesomeIcon icon={faTextHeight} size="2x"></FontAwesomeIcon>
+          <br />
+          Text
+        </div>
       </section>
     );
   if (showTab === "code")

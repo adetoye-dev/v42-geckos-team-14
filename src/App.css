@@ -11,6 +11,7 @@ body {
   font-weight: 300;
   margin: 0;
   padding: 0;
+  background-color: #131313;
 }
 
 .flex {
@@ -91,4 +92,7 @@ pre {
 
 .codeMenu {
   display: block;
+}
+.showTab {
+  background-color: white;
 }

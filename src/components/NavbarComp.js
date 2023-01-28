@@ -20,21 +20,21 @@ function BasicExample() {
           <Nav className="me-auto position-absolute end-0">
             <Nav.Link
               href="/"
-              className="navbar-links links-right-side fw-bold"
+              className="navbar-links links-right-side"
               onClick={() => setShowTab("web")}
             >
               Web
             </Nav.Link>
             <Nav.Link
               href="#link"
-              className="navbar-links links-right-side opacity-75"
+              className="navbar-links links-right-side"
               onClick={() => setShowTab("mob")}
             >
               Mobile
             </Nav.Link>
             <Nav.Link
               href="#link"
-              className="navbar-links links-right-side opacity-75"
+              className="navbar-links links-right-side"
               onClick={() => setShowTab("code")}
             >
               Code

@@ -104,6 +104,8 @@ pre {
   background-color: #F5F1F1;
   border-radius: 6px;
 }
-.btn-branding{
-  
+.codepage-buttons{
+  border-radius: 4px;
+  padding: 5px;
+  background-color: #DCDCDC;
 }

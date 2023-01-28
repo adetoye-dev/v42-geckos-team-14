@@ -3,7 +3,7 @@ import Context from "./Context";
 import ExampleComponentTemplate from "./ExampleComponentTemplate";
 import useAddComponent from "../hooks/useAddComponent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImages } from "@fortawesome/free-solid-svg-icons"; 
+import { faCopy, faFileCode, faFileImage, faImages } from "@fortawesome/free-solid-svg-icons"; 
 import { faTextHeight } from "@fortawesome/free-solid-svg-icons";
 import SearchBar from "./SearchBar";
 import allcomponents from "../allcomponents"; // List of components to render
@@ -45,8 +45,19 @@ function ComponentList(props) {
     return (
       <section className="codeMenu">
         <span>
-          <button onClick={saveToFile}>Save</button>
-          <button onClick={() => navigator.clipboard.writeText(htmlCode)}>
+          <button onClick={saveToFile} className="codepage-buttons">
+            <FontAwesomeIcon icon={faFileCode} size="2x"></FontAwesomeIcon>
+            <br />
+            Save
+          </button>
+          <br />
+          <br />
+          <button
+            onClick={() => navigator.clipboard.writeText(htmlCode)}
+            className="codepage-buttons"
+          >
+            <FontAwesomeIcon icon={faCopy} size="2x"></FontAwesomeIcon>
+            <br />
             Copy
           </button>
         </span>

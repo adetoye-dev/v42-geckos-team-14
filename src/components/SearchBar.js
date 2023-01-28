@@ -8,6 +8,7 @@ export default function SearchBar() {
             <input
               type="search"
               className="form-control"
+              placeholder="Search components.."
               autoFocus="on"
             />
           </div>

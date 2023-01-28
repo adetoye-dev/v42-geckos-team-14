@@ -98,3 +98,12 @@ pre {
 .showTab {
   background-color: white;
 }
+.search-button {
+  padding-left: 3px;
+  text-align: center;
+  background-color: #F5F1F1;
+  border-radius: 6px;
+}
+.btn-branding{
+  
+}

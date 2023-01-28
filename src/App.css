@@ -27,6 +27,7 @@ div {
 }
 
 .c1 {
+  color: black;
   position: relative;
   display: block;
   background-color: #D9D9D9;
@@ -36,6 +37,7 @@ div {
 }
 
 .c2 {
+  color: black;
   position: relative;
   display: block;
   background-color: #D9D9D9;
@@ -45,6 +47,7 @@ div {
 }
 
 .c3 {
+  color: black;
   position: relative;
   display: block;
   background-color: #D9D9D9;
@@ -108,4 +111,9 @@ pre {
   border-radius: 4px;
   padding: 5px;
   background-color: #DCDCDC;
+  margin: 5px;
+}
+#generatedCode {
+  color: black;
+  background-color: white;
 }

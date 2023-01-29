@@ -3,7 +3,7 @@ import Context from "./Context";
 import ExampleComponentTemplate from "./ExampleComponentTemplate";
 import useAddComponent from "../hooks/useAddComponent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCopy, faFileCode, faFileImage, faImages } from "@fortawesome/free-solid-svg-icons"; 
+import { faAddressCard, faCopy, faFileCode, faFileImage, faFileInvoice, faFileLines, faFileShield, faFileSignature, faFolderBlank, faHandPointer, faImages, faMemory } from "@fortawesome/free-solid-svg-icons"; 
 import { faTextHeight } from "@fortawesome/free-solid-svg-icons";
 import SearchBar from "./SearchBar";
 import allcomponents from "../allcomponents"; // List of components to render
@@ -26,19 +26,23 @@ function ComponentList(props) {
     return (
       <section id="ComponentList" onClick={(e) => addComponent(e)}>
         <SearchBar />
-        <ExampleComponentTemplate className="c1" id="c1" text="Navbar" />
+        <ExampleComponentTemplate
+          className="c1 menu-buttons"
+          id="c1"
+          text="Navbar"
+        />
         <br />
-        <div className="c2 fs-5 text-center" id="c2">
-          <FontAwesomeIcon icon={faImages} size="2x"></FontAwesomeIcon>
+        <button className="c2 menu-buttons" id="c2">
+          <FontAwesomeIcon size="2x" icon={faFileInvoice}></FontAwesomeIcon>
           <br />
-          Image
-        </div>
+          <p className="m-0">Card</p>
+        </button>
         <br />
-        <div className="c3 fs-5 text-center" id="c3">
-          <FontAwesomeIcon icon={faTextHeight} size="2x"></FontAwesomeIcon>
+        <button className="c3 menu-buttons" id="c3">
+          <FontAwesomeIcon size="2x" icon={faTextHeight}></FontAwesomeIcon>
           <br />
-          Text
-        </div>
+          <p className="m-0">Text</p>
+        </button>
       </section>
     );
   if (showTab === "code")

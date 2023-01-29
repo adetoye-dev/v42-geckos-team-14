@@ -26,36 +26,23 @@ div {
   width: fit-content;
 }
 
-.c1 {
+.menu-buttons {
   color: black;
   position: relative;
   display: block;
   background-color: #D9D9D9;
-  padding: 20px 150px;
   user-select: none;
-  border-radius: 4px;
+  padding: 25px 25px;
+  width: 100%;
+  max-width: 140px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 17px;
+  border-radius: 5px;
+  border-color: rgb(32, 32, 32);
+  box-shadow: rgba(103, 102, 102, 0.24) 0px 3px 8px;
 }
-
-.c2 {
-  color: black;
-  position: relative;
-  display: block;
-  background-color: #D9D9D9;
-  padding: 30px 40px;
-  user-select: none;
-  border-radius: 4px;
-}
-
-.c3 {
-  color: black;
-  position: relative;
-  display: block;
-  background-color: #D9D9D9;
-  padding: 30px 48px;
-  user-select: none;
-  border-radius: 4px;
-}
-pre {
+re {
   width: 1100px;
   height: 95vh;
   padding: 0;

@@ -3,6 +3,8 @@ import useDragAndDrop from "../hooks/useDragAndDrop";
 import ComponentMenu from "./ComponentMenu";
 import useResizable from "../hooks/useResizable";
 import useDeleteComponent from "../hooks/useDeleteComponent";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 import "./Resizer.css";
 
 function Component(props) {
@@ -51,6 +53,17 @@ function Component(props) {
       ref={componentRef}
       onMouseDown={(e) => mouseDownHandler(e)}
     >
+      <Card style={{ width: "18rem" }}>
+        <Card.Img variant="top" src="holder.js/100px180" />
+        <Card.Body>
+          <Card.Title>Card Title</Card.Title>
+          <Card.Text>
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </Card.Text>
+          <Button variant="primary">Go somewhere</Button>
+        </Card.Body>
+      </Card>
       <ComponentMenu
         onResizeClick={activateResize}
         refId={componentRef}
@@ -58,7 +71,6 @@ function Component(props) {
         // onDeleteClick={useDelete(componentRef)}
         onDeleteClick={() => deleteClickHandler(props.id)}
       />
-      ExampleComponent
     </div>
   );
 }

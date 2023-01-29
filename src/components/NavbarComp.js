@@ -10,7 +10,7 @@ function BasicExample() {
   const { setShowTab } = useContext(Context);
 
   return (
-    <Navbar expand="lg" className="navbar">
+    <Navbar expand="lg" className="navbar fixed-top">
       <Container>
         <Navbar.Brand href="/" className="navbar-links">
           Drag&Drop

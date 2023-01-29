@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 
 export default function SearchBar() {
     return (
-      <form>
+      <form className="search-form">
         <div className="row">
-          <div className="col-9 city-button">
+          <div className="col-9 search-component-button">
             <input
               type="search"
               className="form-control"

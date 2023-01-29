@@ -40,7 +40,10 @@ div {
   font-size: 17px;
   border-radius: 5px;
   border-color: rgb(32, 32, 32);
-  box-shadow: rgba(103, 102, 102, 0.24) 0px 3px 8px;
+  box-shadow: rgba(103, 102, 102, 0.20) 0px 2px 5px;
+}
+.ComponentList {
+  margin-left: 20px;
 }
 re {
   width: 1100px;
@@ -68,8 +71,8 @@ re {
 .showTab {
   display: block;
   width: 70vw;
-  background-color: rgb(221, 220, 220);
   height: 100vh;
+  background-color: white;
 }
 
 .hideTab {
@@ -85,14 +88,16 @@ re {
 .codeMenu {
   display: block;
 }
-.showTab {
-  background-color: white;
-}
+
 .search-button {
   padding-left: 3px;
   text-align: center;
   background-color: #F5F1F1;
   border-radius: 6px;
+}
+.menu-headings {
+  color: white;
+  margin: 15px 0px 15px 3px;
 }
 .codepage-buttons{
   border-radius: 4px;

@@ -24,8 +24,13 @@ function ComponentList(props) {
 
   if (showTab === "web")
     return (
-      <section id="ComponentList" onClick={(e) => addComponent(e)}>
+      <section
+        id="ComponentList"
+        className="ComponentList"
+        onClick={(e) => addComponent(e)}
+      >
         <SearchBar />
+        <h5 className="menu-headings">Standard:</h5>
         <ExampleComponentTemplate
           className="c1 menu-buttons"
           id="c1"
@@ -43,6 +48,7 @@ function ComponentList(props) {
           <br />
           <p className="m-0">Text</p>
         </button>
+        <h5 className="menu-headings">Advanced:</h5>
       </section>
     );
   if (showTab === "code")

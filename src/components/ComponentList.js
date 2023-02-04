@@ -32,24 +32,16 @@ function ComponentList(props) {
         <SearchBar />
         <h5 className="menu-headings">Standard:</h5>
         <div className="component-list-items">
-          <ComponentListItem
-            className="c1 menu-buttons"
-            id="c1"
-            text="Navbar"
-            icon="magnifying-glass"
-          />
-          <ComponentListItem
-            className="c2 menu-buttons"
-            id="c2"
-            text="Card"
-            icon="file-invoice"
-          />
-          <ComponentListItem
-            className="c3 menu-buttons"
-            id="c3"
-            text="Text"
-            icon="text-height"
-          />
+          {allcomponents.map((item) => {
+            return (
+              <ComponentListItem
+                className="c1 menu-buttons"
+                id={item.id}
+                text={item.name}
+                icon={item.icon}
+              />
+            );
+          })}
         </div>
 
         <h5 className="menu-headings">Advanced:</h5>

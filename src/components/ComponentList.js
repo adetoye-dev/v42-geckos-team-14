@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Context from "./Context";
 import ComponentListItem from "./ComponentListItem";
 import useAddComponent from "../hooks/useAddComponent";
@@ -12,6 +12,15 @@ function ComponentList(props) {
   const { showTab } = useContext(Context);
   const { htmlCode } = useContext(Context);
   const { addComponent } = useAddComponent();
+  const [componentItems, setComponentItems] = useState(allcomponents);
+
+  const findComponent = (input) => {
+    const filteredList = allcomponents.filter((item) => {
+      return item.name.toLowerCase().includes(input.toLowerCase());
+    });
+
+    setComponentItems(filteredList);
+  };
 
   async function saveToFile() {
     let myBlob = new Blob([htmlCode], { type: "text/document" });
@@ -29,10 +38,10 @@ function ComponentList(props) {
         className="ComponentList"
         onClick={(e) => addComponent(e)}
       >
-        <SearchBar />
+        <SearchBar findComponent={findComponent} />
         <h5 className="menu-headings">Standard:</h5>
         <div className="component-list-items">
-          {allcomponents.map((item) => {
+          {componentItems.map((item) => {
             return (
               <ComponentListItem
                 className="c1 menu-buttons"

@@ -7,9 +7,11 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import "./App.css";
 import {
   faAddressCard,
-  faCopy,
-  faFileCode,
+  faList,
+  faLink,
   faFileImage,
+  faArrowUp,
+  faMinus,
   faMagnifyingGlass,
   faFileInvoice,
   faFileLines,
@@ -24,9 +26,11 @@ import {
 
 library.add(
   faAddressCard,
-  faCopy,
-  faFileCode,
+  faList,
+  faLink,
   faFileImage,
+  faArrowUp,
+  faMinus,
   faMagnifyingGlass,
   faFileInvoice,
   faFileLines,

@@ -44,6 +44,7 @@ function ComponentList(props) {
           {componentItems.map((item) => {
             return (
               <ComponentListItem
+                key={item.id}
                 className="c1 menu-buttons"
                 id={item.id}
                 text={item.name}

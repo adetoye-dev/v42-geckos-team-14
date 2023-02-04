@@ -1,4 +1,3 @@
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function ComponentListItem(props) {
@@ -9,7 +8,7 @@ function ComponentListItem(props) {
       onClick={props.onClick}
       ref={props.refId}
     >
-      <FontAwesomeIcon size="2x" icon={faMagnifyingGlass}></FontAwesomeIcon>
+      <FontAwesomeIcon size="2x" icon={props.icon}></FontAwesomeIcon>
       <br />
       {props.text}
     </button>

@@ -34,21 +34,21 @@ function ComponentList(props) {
           className="c1 menu-buttons"
           id="c1"
           text="Navbar"
-          icon={faMagnifyingGlass}
+          icon="magnifying-glass"
         />
         <br />
         <ComponentListItem
           className="c2 menu-buttons"
           id="c2"
           text="Card"
-          icon={faFileInvoice}
+          icon="file-invoice"
         />
         <br />
         <ComponentListItem
           className="c3 menu-buttons"
           id="c3"
           text="Text"
-          icon={faTextHeight}
+          icon="text-height"
         />
         <h5 className="menu-headings">Advanced:</h5>
       </section>

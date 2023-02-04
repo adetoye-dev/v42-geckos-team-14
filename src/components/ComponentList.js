@@ -33,14 +33,10 @@ function ComponentList(props) {
 
   if (showTab === "web")
     return (
-      <section
-        id="ComponentList"
-        className="ComponentList"
-        onClick={(e) => addComponent(e)}
-      >
+      <section id="ComponentList" className="ComponentList">
         <SearchBar findComponent={findComponent} />
         <h5 className="menu-headings">Standard:</h5>
-        <div className="component-list-items">
+        <div className="component-list-items" onClick={(e) => addComponent(e)}>
           {componentItems.map((item) => {
             return (
               <ComponentListItem

@@ -5,6 +5,7 @@ import useAddComponent from "../hooks/useAddComponent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy, faFileCode } from "@fortawesome/free-solid-svg-icons";
 import SearchBar from "./SearchBar";
+import "./ComponentList.css";
 import allcomponents from "../allcomponents"; // List of components to render
 
 function ComponentList(props) {
@@ -30,26 +31,27 @@ function ComponentList(props) {
       >
         <SearchBar />
         <h5 className="menu-headings">Standard:</h5>
-        <ComponentListItem
-          className="c1 menu-buttons"
-          id="c1"
-          text="Navbar"
-          icon="magnifying-glass"
-        />
-        <br />
-        <ComponentListItem
-          className="c2 menu-buttons"
-          id="c2"
-          text="Card"
-          icon="file-invoice"
-        />
-        <br />
-        <ComponentListItem
-          className="c3 menu-buttons"
-          id="c3"
-          text="Text"
-          icon="text-height"
-        />
+        <div className="component-list-items">
+          <ComponentListItem
+            className="c1 menu-buttons"
+            id="c1"
+            text="Navbar"
+            icon="magnifying-glass"
+          />
+          <ComponentListItem
+            className="c2 menu-buttons"
+            id="c2"
+            text="Card"
+            icon="file-invoice"
+          />
+          <ComponentListItem
+            className="c3 menu-buttons"
+            id="c3"
+            text="Text"
+            icon="text-height"
+          />
+        </div>
+
         <h5 className="menu-headings">Advanced:</h5>
       </section>
     );

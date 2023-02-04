@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
   font-weight: 300;
   margin: 0;
   padding: 0;
@@ -24,23 +24,6 @@ div {
   /* margin: 5px;
   margin-top: 0px; */
   width: fit-content;
-}
-
-.menu-buttons {
-  color: black;
-  position: relative;
-  display: block;
-  background-color: #D9D9D9;
-  user-select: none;
-  padding: 25px 25px;
-  width: 100%;
-  max-width: 140px;
-  box-sizing: border-box;
-  text-align: center;
-  font-size: 17px;
-  border-radius: 5px;
-  border-color: rgb(32, 32, 32);
-  box-shadow: rgba(103, 102, 102, 0.20) 0px 2px 5px;
 }
 .ComponentList {
   margin-left: 20px;
@@ -92,17 +75,17 @@ re {
 .search-button {
   padding-left: 3px;
   text-align: center;
-  background-color: #F5F1F1;
+  background-color: #f5f1f1;
   border-radius: 6px;
 }
 .menu-headings {
   color: white;
   margin: 15px 0px 15px 3px;
 }
-.codepage-buttons{
+.codepage-buttons {
   border-radius: 4px;
   padding: 5px;
-  background-color: #DCDCDC;
+  background-color: #dcdcdc;
   margin: 5px;
 }
 #generatedCode {

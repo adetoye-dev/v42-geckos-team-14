@@ -1,0 +1,23 @@
+.component-list-items {
+  margin: 0 auto;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.menu-buttons {
+  color: black;
+  position: relative;
+  display: block;
+  background-color: #d9d9d9;
+  user-select: none;
+  width: 100%;
+  padding: 25px 25px;
+  max-width: 140px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 17px;
+  border-radius: 5px;
+  border-color: rgb(32, 32, 32);
+  box-shadow: rgba(103, 102, 102, 0.2) 0px 2px 5px;
+}

@@ -8,6 +8,7 @@ import {
   faCopy,
   faFileCode,
   faFileImage,
+  faMagnifyingGlass,
   faFileInvoice,
   faFileLines,
   faFileShield,
@@ -44,19 +45,11 @@ function ComponentList(props) {
       >
         <SearchBar />
         <h5 className="menu-headings">Standard:</h5>
-        <ComponentListItem className="c1 menu-buttons" id="c1" text="Navbar" />
+        <ComponentListItem className="c1 menu-buttons" id="c1" text="Navbar" icon={faMagnifyingGlass} />
         <br />
-        <button className="c2 menu-buttons" id="c2">
-          <FontAwesomeIcon size="2x" icon={faFileInvoice}></FontAwesomeIcon>
-          <br />
-          <p className="m-0">Card</p>
-        </button>
+        <ComponentListItem className="c2 menu-buttons" id="c2" text="Card" icon={faFileInvoice} />
         <br />
-        <button className="c3 menu-buttons" id="c3">
-          <FontAwesomeIcon size="2x" icon={faTextHeight}></FontAwesomeIcon>
-          <br />
-          <p className="m-0">Text</p>
-        </button>
+        <ComponentListItem className="c3 menu-buttons" id="c3" text="Text" icon={faTextHeight} />
         <h5 className="menu-headings">Advanced:</h5>
       </section>
     );

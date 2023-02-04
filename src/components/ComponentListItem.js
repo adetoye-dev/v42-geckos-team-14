@@ -1,8 +1,7 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
-function ExampleComponentTemplate(props) {
+function ComponentListItem(props) {
   return (
     <button
       className={`${props.className}`}
@@ -17,4 +16,4 @@ function ExampleComponentTemplate(props) {
   );
 }
 
-export default ExampleComponentTemplate;
+export default ComponentListItem;

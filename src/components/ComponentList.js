@@ -1,9 +1,22 @@
 import React, { useContext } from "react";
 import Context from "./Context";
-import ExampleComponentTemplate from "./ExampleComponentTemplate";
+import ComponentListItem from "./ComponentListItem";
 import useAddComponent from "../hooks/useAddComponent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAddressCard, faCopy, faFileCode, faFileImage, faFileInvoice, faFileLines, faFileShield, faFileSignature, faFolderBlank, faHandPointer, faImages, faMemory } from "@fortawesome/free-solid-svg-icons"; 
+import {
+  faAddressCard,
+  faCopy,
+  faFileCode,
+  faFileImage,
+  faFileInvoice,
+  faFileLines,
+  faFileShield,
+  faFileSignature,
+  faFolderBlank,
+  faHandPointer,
+  faImages,
+  faMemory,
+} from "@fortawesome/free-solid-svg-icons";
 import { faTextHeight } from "@fortawesome/free-solid-svg-icons";
 import SearchBar from "./SearchBar";
 import allcomponents from "../allcomponents"; // List of components to render
@@ -31,11 +44,7 @@ function ComponentList(props) {
       >
         <SearchBar />
         <h5 className="menu-headings">Standard:</h5>
-        <ExampleComponentTemplate
-          className="c1 menu-buttons"
-          id="c1"
-          text="Navbar"
-        />
+        <ComponentListItem className="c1 menu-buttons" id="c1" text="Navbar" />
         <br />
         <button className="c2 menu-buttons" id="c2">
           <FontAwesomeIcon size="2x" icon={faFileInvoice}></FontAwesomeIcon>

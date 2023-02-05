@@ -45,7 +45,7 @@ function ComponentList(props) {
                 id={item.id}
                 text={item.name}
                 icon={item.icon}
-                handleClick={(e) => addComponent(item, e)}
+                handleClick={() => addComponent(item)}
               />
             );
           })}

@@ -20,7 +20,7 @@ function useAddComponent() {
     return previewAreaBoundaries.top;
   };
 
-  function createComponent(item, e) {
+  function createComponent(item) {
     const id = nanoid();
     const componentPosition = {
       top: calculateTopOffset(),
@@ -41,8 +41,8 @@ function useAddComponent() {
     );
   }
 
-  function addComponent(item, e) {
-    const component = createComponent(item, e);
+  function addComponent(item) {
+    const component = createComponent(item);
 
     setComponents((prev) => [...prev, component]);
   }

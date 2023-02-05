@@ -5,7 +5,7 @@ function ComponentListItem(props) {
     <button
       className={`${props.className}`}
       id={`${props.id}`}
-      onClick={props.onClick}
+      onClick={props.handleClick}
       ref={props.refId}
     >
       <FontAwesomeIcon size="2x" icon={props.icon}></FontAwesomeIcon>

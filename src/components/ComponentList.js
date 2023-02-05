@@ -36,7 +36,7 @@ function ComponentList(props) {
       <section id="ComponentList" className="ComponentList">
         <SearchBar findComponent={findComponent} />
         <h5 className="menu-headings">Standard:</h5>
-        <div className="component-list-items" onClick={(e) => addComponent(e)}>
+        <div className="component-list-items">
           {componentItems.map((item) => {
             return (
               <ComponentListItem
@@ -45,6 +45,7 @@ function ComponentList(props) {
                 id={item.id}
                 text={item.name}
                 icon={item.icon}
+                handleClick={(e) => addComponent(item, e)}
               />
             );
           })}

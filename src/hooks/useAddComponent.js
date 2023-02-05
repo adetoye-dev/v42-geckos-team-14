@@ -19,32 +19,29 @@ function useAddComponent() {
     return previewAreaBoundaries.top;
   };
 
-  function createComponent(e) {
-    const selectedComponent = e.target;
-    const id = `${selectedComponent.id}${Math.random()}`;
+  function createComponent(item, e) {
+    const id = `${item.id}${Math.random()}`;
     const middleOfPreview = {
       top: calculateTopOffset(),
       left: previewAreaBoundaries.middleX - e.target.offsetWidth / 2,
     };
 
-    if (selectedComponent.id !== "ComponentList") {
-      return (
-        <Component
-          class={selectedComponent.className}
-          startPosition={{
-            top: middleOfPreview.top,
-            left: middleOfPreview.left,
-          }}
-          // startPosition={{ top: selectedComponent.offsetTop, left: selectedComponent.offsetLeft }}
-          id={id}
-          key={id}
-        />
-      );
-    }
+    return (
+      <Component
+        class={item.bootstrapTags}
+        startPosition={{
+          top: middleOfPreview.top,
+          left: middleOfPreview.left,
+        }}
+        // startPosition={{ top: selectedComponent.offsetTop, left: selectedComponent.offsetLeft }}
+        id={id}
+        key={id}
+      />
+    );
   }
 
-  function addComponent(e) {
-    const component = createComponent(e);
+  function addComponent(item, e) {
+    const component = createComponent(item, e);
 
     setComponents((prev) => [...prev, component]);
   }

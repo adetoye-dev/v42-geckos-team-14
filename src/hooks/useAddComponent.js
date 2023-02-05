@@ -22,7 +22,7 @@ function useAddComponent() {
 
   function createComponent(item, e) {
     const id = nanoid();
-    const middleOfPreview = {
+    const componentPosition = {
       top: calculateTopOffset(),
       left: 50,
     };
@@ -31,8 +31,8 @@ function useAddComponent() {
       <Component
         class={item.bootstrapTags}
         startPosition={{
-          top: middleOfPreview.top,
-          left: middleOfPreview.left,
+          top: componentPosition.top,
+          left: componentPosition.left,
         }}
         // startPosition={{ top: selectedComponent.offsetTop, left: selectedComponent.offsetLeft }}
         id={id}

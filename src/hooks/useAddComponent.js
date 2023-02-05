@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import Component from "../components/Component";
 import Context from "../components/Context";
+import { nanoid } from "nanoid";
 
 function useAddComponent() {
   const { components, setComponents, previewAreaBoundaries } =
@@ -20,7 +21,7 @@ function useAddComponent() {
   };
 
   function createComponent(item, e) {
-    const id = `${item.id}${Math.random()}`;
+    const id = nanoid();
     const middleOfPreview = {
       top: calculateTopOffset(),
       left: previewAreaBoundaries.middleX - e.target.offsetWidth / 2,

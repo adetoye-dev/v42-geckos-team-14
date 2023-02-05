@@ -35,8 +35,10 @@ function PreviewArea(props) {
 
   if (showTab === "web")
     return (
-      <section className="showTab workArea" ref={previewAreaRef}>
-        {renderComponents}
+      <section className="showTab workArea">
+        <div className="previewArea" ref={previewAreaRef}>
+          {renderComponents}
+        </div>
       </section>
     );
 

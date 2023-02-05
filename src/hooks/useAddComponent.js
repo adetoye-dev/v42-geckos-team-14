@@ -24,7 +24,7 @@ function useAddComponent() {
     const id = nanoid();
     const middleOfPreview = {
       top: calculateTopOffset(),
-      left: previewAreaBoundaries.middleX - e.target.offsetWidth / 2,
+      left: 50,
     };
 
     return (

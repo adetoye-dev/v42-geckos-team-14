@@ -11,6 +11,7 @@ import "./Resizer.css";
 function Component(props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { setOpenEditTab } = useContext(Context);
+  const { setCurrentComponentId } = useContext(Context);
   const { setIsComponentMove, componentPosition } = useDragAndDrop(
     props.startPosition
   );
@@ -43,6 +44,11 @@ function Component(props) {
     deleteComponent(id);
   }
 
+  function handleDoubleClick(id) {
+    setOpenEditTab(true);
+    setCurrentComponentId(id);
+  }
+
   return (
     <div
       id={props.id}
@@ -54,7 +60,7 @@ function Component(props) {
       style={myStyle}
       ref={componentRef}
       onMouseDown={(e) => mouseDownHandler(e)}
-      onDoubleClick={() => setOpenEditTab(true)}
+      onDoubleClick={() => handleDoubleClick(props.id)}
     >
       {/* <Card style={{ width: "18rem" }}>
         <Card.Body>

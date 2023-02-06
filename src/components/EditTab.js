@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import Context from "./Context";
+import useDeleteComponent from "../hooks/useDeleteComponent";
 import "./EditTab.css";
 
 const TextTab = () => {
@@ -47,12 +48,12 @@ const ResizeTab = () => {
   );
 };
 
-const DeleteTab = () => {
+const DeleteTab = (props) => {
   return (
     <div className="deleteTab">
       <span>Would you like to delete this component?</span>
       <div className="delete-btns">
-        <button>Yes</button>
+        <button onClick={props.onDeleteClick}>Yes</button>
         <button>No</button>
       </div>
     </div>
@@ -63,6 +64,12 @@ const EditTab = () => {
   const [currentTab, setCurrentTab] = useState("text");
   const { setOpenEditTab } = useContext(Context);
   const { currentComponentId } = useContext(Context);
+  const deleteComponent = useDeleteComponent();
+
+  function deleteClickHandler(id) {
+    deleteComponent(id);
+    setOpenEditTab(false);
+  }
 
   return (
     <div className="editTab">
@@ -95,7 +102,9 @@ const EditTab = () => {
         ) : currentTab === "resize" ? (
           <ResizeTab />
         ) : (
-          <DeleteTab />
+          <DeleteTab
+            onDeleteClick={() => deleteClickHandler(currentComponentId)}
+          />
         )}
       </div>
       <button className="save-edit-btn">Save Changes</button>

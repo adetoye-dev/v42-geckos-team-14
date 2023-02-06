@@ -5,10 +5,12 @@ import useAddComponent from "../hooks/useAddComponent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy, faFileCode } from "@fortawesome/free-solid-svg-icons";
 import SearchBar from "./SearchBar";
+import EditTab from "./EditTab";
 import "./ComponentList.css";
 import allcomponents from "../allcomponents"; // List of components to render
 
 function ComponentList(props) {
+  const { openEditTab } = useContext(Context);
   const { showTab } = useContext(Context);
   const { htmlCode } = useContext(Context);
   const { addComponent } = useAddComponent();
@@ -32,7 +34,9 @@ function ComponentList(props) {
   }
 
   if (showTab === "web")
-    return (
+    return openEditTab ? (
+      <EditTab />
+    ) : (
       <section id="ComponentList" className="ComponentList">
         <SearchBar findComponent={findComponent} />
         <h5 className="menu-headings">Standard:</h5>

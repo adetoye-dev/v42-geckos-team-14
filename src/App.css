@@ -29,7 +29,6 @@ div {
 .ComponentList {
   padding-inline: 20px;
   width: 30%;
-  outline: 2px solid red;
 }
 
 .editTab {
@@ -37,7 +36,7 @@ div {
   padding-inline: 20px;
   display: flex;
   flex-direction: column;
-  background-color: goldenrod;
+  color: white;
 }
 
 pre {

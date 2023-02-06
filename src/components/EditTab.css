@@ -3,12 +3,12 @@
   width: fit-content;
   border: 1px solid black;
   background-color: white;
+  color: black;
 }
 
 .editTab-menu {
   width: 100%;
   padding-block: 10px;
-  outline: 2px solid green;
   display: flex;
   gap: 15px;
   justify-content: space-between;
@@ -19,12 +19,11 @@
   padding: 5px 15px;
   border-radius: 8px;
   cursor: pointer;
-  outline: 2px solid red;
+  border: 1px solid #777;
 }
 
 .editTab-content {
   width: 100%;
-  outline: 2px solid blue;
 }
 
 .edit-text {
@@ -50,11 +49,11 @@
 
 .deleteTab {
   padding: 1rem 2rem;
+  border: 1px solid #777;
   text-align: center;
 }
 
 .delete-btns {
-  outline: 2px solid blue;
   width: 100%;
   display: flex;
   margin-top: 1rem;

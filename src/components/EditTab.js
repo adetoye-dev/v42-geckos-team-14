@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import Context from "./Context";
 import "./EditTab.css";
 
 const TextTab = () => {
@@ -60,10 +61,13 @@ const DeleteTab = () => {
 
 const EditTab = () => {
   const [currentTab, setCurrentTab] = useState("text");
+  const { setOpenEditTab } = useContext(Context);
 
   return (
     <div className="editTab">
-      <span className="close-tab-btn">x</span>
+      <span className="close-tab-btn" onClick={() => setOpenEditTab(false)}>
+        x
+      </span>
       <div className="editTab-menu">
         <span
           className="editTab-menuItem"

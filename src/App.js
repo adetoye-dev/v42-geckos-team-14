@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import Context from "./components/Context";
 import PreviewArea from "./components/PreviewArea";
 import ComponentList from "./components/ComponentList";
 import NavbarComp from "./components/NavbarComp";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import EditTab from "./components/EditTab";
 import "./App.css";
 import {
   faAddressCard,
@@ -43,12 +45,13 @@ library.add(
 );
 
 function App() {
+  const { openEditTab } = useContext(Context);
   return (
     <>
       <NavbarComp />
       <div className="flex">
         <PreviewArea />
-        <ComponentList />
+        {openEditTab ? <EditTab /> : <ComponentList />}
       </div>
     </>
   );

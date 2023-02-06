@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useContext } from "react";
+import Context from "./Context";
 import useDragAndDrop from "../hooks/useDragAndDrop";
 import ComponentMenu from "./ComponentMenu";
 import useResizable from "../hooks/useResizable";
@@ -9,6 +10,7 @@ import "./Resizer.css";
 
 function Component(props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { setOpenEditTab } = useContext(Context);
   const { setIsComponentMove, componentPosition } = useDragAndDrop(
     props.startPosition
   );
@@ -52,7 +54,7 @@ function Component(props) {
       style={myStyle}
       ref={componentRef}
       onMouseDown={(e) => mouseDownHandler(e)}
-      onDoubleClick={() => console.log("I was double clicked!")}
+      onDoubleClick={() => setOpenEditTab(true)}
     >
       {/* <Card style={{ width: "18rem" }}>
         <Card.Body>

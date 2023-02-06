@@ -1,0 +1,74 @@
+.close-tab-btn {
+  padding-inline: 5px;
+  width: fit-content;
+  border: 1px solid black;
+  background-color: white;
+}
+
+.editTab-menu {
+  width: 100%;
+  padding-block: 10px;
+  outline: 2px solid green;
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  margin-block: 1rem;
+}
+
+.editTab-menuItem {
+  padding: 5px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: 2px solid red;
+}
+
+.editTab-content {
+  width: 100%;
+  outline: 2px solid blue;
+}
+
+.edit-text {
+  width: 100%;
+  height: 300px;
+  padding: 5px;
+}
+
+.resize-tab h3 {
+  margin-top: 20px;
+}
+
+.resizer-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.resize-input-value {
+  padding: 5px;
+  max-width: 50%;
+}
+
+.deleteTab {
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+.delete-btns {
+  outline: 2px solid blue;
+  width: 100%;
+  display: flex;
+  margin-top: 1rem;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.delete-btns button {
+  padding: 5px 15px;
+  border-radius: 6px;
+}
+
+.save-edit-btn {
+  padding: 5px 10px;
+  border-radius: 6px;
+  margin: 20px auto;
+}

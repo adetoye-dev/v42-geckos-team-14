@@ -5,7 +5,7 @@ const TextTab = () => {
   return (
     <>
       <h1>Text:</h1>
-      <input className="edit-text" value={"dsaljl;kdjlkjajlkdjkfl"} />
+      <textarea className="edit-text" value={"dsaljl;kdjlkjajlkdjkfl"} />
     </>
   );
 };
@@ -24,9 +24,9 @@ const ResizeTab = () => {
             value="100"
             min="0"
             max="100"
-            class="resize-input"
+            class="resize-input-range"
           />
-          <input type="text" value={"100"} />
+          <input className="resize-input-value" type="text" value={"100"} />
         </div>
         <h3>Height:</h3>
         <div className="resizer-inputs">
@@ -37,9 +37,9 @@ const ResizeTab = () => {
             value="100"
             min="0"
             max="100"
-            class="resize-input"
+            class="resize-input-range"
           />
-          <input type="text" value={"100"} />
+          <input type="text" className="resize-input-value" value={"100"} />
         </div>
       </div>
     </>
@@ -49,9 +49,11 @@ const ResizeTab = () => {
 const DeleteTab = () => {
   return (
     <div className="deleteTab">
-      Would you like to delete this component?
-      <button>Yes</button>
-      <button>No</button>
+      <span>Would you like to delete this component?</span>
+      <div className="delete-btns">
+        <button>Yes</button>
+        <button>No</button>
+      </div>
     </div>
   );
 };

@@ -52,8 +52,9 @@ function Component(props) {
       style={myStyle}
       ref={componentRef}
       onMouseDown={(e) => mouseDownHandler(e)}
+      onDoubleClick={() => console.log("I was double clicked!")}
     >
-      <Card style={{ width: "18rem" }}>
+      {/* <Card style={{ width: "18rem" }}>
         <Card.Body>
           <Card.Title>Card Title</Card.Title>
           <Card.Text>
@@ -62,7 +63,8 @@ function Component(props) {
           </Card.Text>
           <Button variant="primary">Go somewhere</Button>
         </Card.Body>
-      </Card>
+      </Card> */}
+      {props.text}
       <ComponentMenu
         onResizeClick={activateResize}
         refId={componentRef}

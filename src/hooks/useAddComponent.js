@@ -24,7 +24,7 @@ function useAddComponent() {
     const id = nanoid();
     const componentPosition = {
       top: calculateTopOffset(),
-      left: 50,
+      left: 20,
     };
 
     return (
@@ -37,6 +37,7 @@ function useAddComponent() {
         // startPosition={{ top: selectedComponent.offsetTop, left: selectedComponent.offsetLeft }}
         id={id}
         key={id}
+        text={item.editText}
       />
     );
   }

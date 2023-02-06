@@ -4,6 +4,7 @@ const Context = createContext();
 
 export function ContextProvider(props) {
   const [components, setComponents] = useState([]);
+  const [currentComponentId, setCurrentComponentId] = useState("");
   const [htmlCode, sethtmlCode] = useState("The code will be here");
   const [showTab, setShowTab] = useState("web");
   const [openEditTab, setOpenEditTab] = useState(false);
@@ -21,6 +22,8 @@ export function ContextProvider(props) {
         setShowTab,
         openEditTab,
         setOpenEditTab,
+        currentComponentId,
+        setCurrentComponentId,
         darkLightMode,
         setDarkLightMode,
         previewAreaBoundaries,

@@ -30,7 +30,7 @@ const allcomponents = [
     editText: "Sample button",
     editSubtext: "nonEditable",
     editImg: "nonEditable",
-    bootstrapTags: "",
+    bootstrapTags: "btn btn-primary",
   },
   {
     id: 3,
@@ -56,7 +56,7 @@ const allcomponents = [
     editText: "Sample header text",
     editSubtext: "nonEditable",
     editImg: "editable",
-    bootstrapTags: "",
+    bootstrapTags: "navbar navbar-expand-lg navbar-light bg-light",
   },
   {
     id: 5,

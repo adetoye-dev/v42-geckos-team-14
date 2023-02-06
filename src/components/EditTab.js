@@ -62,6 +62,7 @@ const DeleteTab = () => {
 const EditTab = () => {
   const [currentTab, setCurrentTab] = useState("text");
   const { setOpenEditTab } = useContext(Context);
+  const { currentComponentId } = useContext(Context);
 
   return (
     <div className="editTab">

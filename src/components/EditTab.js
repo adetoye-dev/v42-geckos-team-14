@@ -63,9 +63,24 @@ const EditTab = () => {
     <div className="editTab">
       <span className="close-tab-btn">x</span>
       <div className="editTab-menu">
-        <span className="editTab-menuItem">Edit</span>
-        <span className="editTab-menuItem">Resize</span>
-        <span className="editTab-menuItem">Delete</span>
+        <span
+          className="editTab-menuItem"
+          onClick={() => setCurrentTab("text")}
+        >
+          Edit
+        </span>
+        <span
+          className="editTab-menuItem"
+          onClick={() => setCurrentTab("resize")}
+        >
+          Resize
+        </span>
+        <span
+          className="editTab-menuItem"
+          onClick={() => setCurrentTab("delete")}
+        >
+          Delete
+        </span>
       </div>
       <div className="editTab-content">
         {currentTab === "text" ? (

@@ -1,13 +1,22 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Context from "./Context";
 import useDeleteComponent from "../hooks/useDeleteComponent";
+import useEditText from "../hooks/useEditText";
 import "./EditTab.css";
 
-const TextTab = () => {
+const TextTab = ({ currentComponentId }) => {
+  const { text, handleChange, handleSave } = useEditText(currentComponentId);
   return (
     <>
       <h1>Text:</h1>
-      <textarea className="edit-text" value={"dsaljl;kdjlkjajlkdjkfl"} />
+      <textarea
+        className="edit-text"
+        value={text}
+        onChange={(e) => handleChange(e)}
+      />
+      <button className="save-edit-btn" onClick={handleSave}>
+        Save Changes
+      </button>
     </>
   );
 };
@@ -44,6 +53,7 @@ const ResizeTab = () => {
           <input type="text" className="resize-input-value" value={"100"} />
         </div>
       </div>
+      <button className="save-edit-btn">Save Changes</button>
     </>
   );
 };
@@ -98,7 +108,7 @@ const EditTab = () => {
       </div>
       <div className="editTab-content">
         {currentTab === "text" ? (
-          <TextTab />
+          <TextTab currentComponentId={currentComponentId} />
         ) : currentTab === "resize" ? (
           <ResizeTab />
         ) : (
@@ -107,7 +117,6 @@ const EditTab = () => {
           />
         )}
       </div>
-      <button className="save-edit-btn">Save Changes</button>
     </div>
   );
 };

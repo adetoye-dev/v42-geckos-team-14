@@ -1,15 +1,16 @@
-import { useEffect } from "react";
+import { useState, useContext } from "react";
+import Context from "../components/Context";
+import Component from "../components/Component";
 
-const useEditText = (component) => {
-  const [editTabOpen, setEditTabOpen] = useState(false);
-  const [text, setText] = useState(component.text);
+const useEditText = (id) => {
+  const { setOpenEditTab } = useContext(Context);
+  const { components, setComponents } = useContext(Context);
+  const component = components.find((item) => item.props.id === id);
 
-  const openEditTab = () => {
-    setEditTabOpen(true);
-  };
+  const [text, setText] = useState(component.props.text);
 
   const closeEditTab = () => {
-    setEditTabOpen(false);
+    setOpenEditTab(false);
   };
 
   const handleChange = (e) => {
@@ -17,18 +18,27 @@ const useEditText = (component) => {
   };
 
   const handleSave = () => {
-    component.text = text;
+    setComponents((components) =>
+      components.map((component) => {
+        if (component.props.id === id) {
+          return (
+            <Component
+              class={component.props.class}
+              startPosition={component.props.startPosition}
+              id={component.props.id}
+              key={component.props.id}
+              text={text}
+            />
+          );
+        }
+        return component;
+      })
+    );
+
     closeEditTab();
   };
 
-  useEffect(() => {
-    openEditTab();
-  }, []);
-
   return {
-    editTabOpen,
-    openEditTab,
-    closeEditTab,
     text,
     handleChange,
     handleSave,

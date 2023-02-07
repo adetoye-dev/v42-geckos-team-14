@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import Context from "../components/Context";
 
 const useResizable = (id) => {
   const [resizable, setResizable] = useState(false);
+  const { setOpenEditTab } = useContext(Context);
   const [componentWidth, setComponentWidth] = useState();
   const [componentHeight, setComponentHeight] = useState();
   const component = document.getElementById(id);
@@ -17,6 +19,10 @@ const useResizable = (id) => {
   //   setComponentHeight(clientY - ref.current.offsetTop);
   // };
 
+  const closeEditTab = () => {
+    setOpenEditTab(false);
+  };
+
   useEffect(() => {
     if (component) {
       setComponentWidth(component.offsetWidth);
@@ -29,6 +35,14 @@ const useResizable = (id) => {
   const resetValues = () => {
     component.style.width = `${componentWidth}px`;
     component.style.height = `${componentHeight}px`;
+    setWidth(componentWidth);
+    setHeight(componentHeight);
+  };
+
+  const handleSave = () => {
+    setComponentWidth(width);
+    setComponentHeight(height);
+    closeEditTab();
   };
 
   const handleWidthChange = (e) => {
@@ -86,7 +100,14 @@ const useResizable = (id) => {
   // }, [resizable]);
 
   // return [resizable, componentWidth, componentHeight, activateResize];
-  return { width, height, handleWidthChange, handleHeightChange, resetValues };
+  return {
+    width,
+    height,
+    handleWidthChange,
+    handleHeightChange,
+    resetValues,
+    handleSave,
+  };
 };
 
 export default useResizable;

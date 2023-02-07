@@ -12,6 +12,7 @@ const TextTab = ({ currentComponentId }) => {
       <textarea
         className="edit-text"
         value={text}
+        autoFocus="on"
         onChange={(e) => handleChange(e)}
       />
       <button className="save-edit-btn" onClick={handleSave}>

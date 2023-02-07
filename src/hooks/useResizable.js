@@ -26,6 +26,11 @@ const useResizable = (id) => {
     }
   }, [id]);
 
+  const resetValues = () => {
+    component.style.width = `${componentWidth}px`;
+    component.style.height = `${componentHeight}px`;
+  };
+
   const handleWidthChange = (e) => {
     setWidth(e.target.value);
     component.style.width = `${e.target.value}px`;
@@ -81,7 +86,7 @@ const useResizable = (id) => {
   // }, [resizable]);
 
   // return [resizable, componentWidth, componentHeight, activateResize];
-  return { width, height, handleWidthChange, handleHeightChange };
+  return { width, height, handleWidthChange, handleHeightChange, resetValues };
 };
 
 export default useResizable;

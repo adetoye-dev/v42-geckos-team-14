@@ -1,7 +1,6 @@
 import { useRef, useState, useContext } from "react";
 import Context from "./Context";
 import useDragAndDrop from "../hooks/useDragAndDrop";
-import useResizable from "../hooks/useResizable";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "./Resizer.css";
@@ -16,15 +15,10 @@ function Component(props) {
 
   const componentRef = useRef(null);
 
-  const [resizable, componentWidth, componentHeight, activateResize] =
-    useResizable(componentRef);
-
   const myStyle = {
     position: "absolute",
     top: `${componentPosition.top}px`,
     left: `${componentPosition.left}px`,
-    width: componentWidth,
-    height: componentHeight,
   };
 
   function mouseDownHandler(e) {
@@ -40,11 +34,7 @@ function Component(props) {
   return (
     <div
       id={props.id}
-      className={
-        resizable
-          ? `${props.class} resizeable-element`
-          : `${props.class} surrounding-element`
-      }
+      className={props.class}
       style={myStyle}
       ref={componentRef}
       onMouseDown={(e) => mouseDownHandler(e)}

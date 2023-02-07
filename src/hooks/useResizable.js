@@ -1,69 +1,87 @@
 import { useState, useEffect } from "react";
 
-const useResizable = (ref) => {
+const useResizable = (id) => {
   const [resizable, setResizable] = useState(false);
   const [componentWidth, setComponentWidth] = useState();
   const [componentHeight, setComponentHeight] = useState();
+  const component = document.getElementById(id);
+  const [width, setWidth] = useState();
+  const [height, setHeight] = useState();
 
-  const activateResize = (e) => {
-    const { clientX, clientY } = e;
-    setResizable(true);
-    setComponentWidth(clientX - ref.current.offsetLeft);
-    setComponentHeight(clientY - ref.current.offsetTop);
-  };
+  console.log(componentWidth, width);
+
+  // const activateResize = (e) => {
+  //   const { clientX, clientY } = e;
+  //   setResizable(true);
+  //   setComponentWidth(clientX - ref.current.offsetLeft);
+  //   setComponentHeight(clientY - ref.current.offsetTop);
+  // };
 
   useEffect(() => {
-    if (ref.current) {
-      setComponentWidth(ref.current.offsetWidth);
-      setComponentHeight(ref.current.offsetHeight);
+    if (component) {
+      setComponentWidth(component.offsetWidth);
+      setComponentHeight(component.offsetHeight);
+      setWidth(component.offsetWidth);
+      setHeight(component.offsetHeight);
     }
-  }, [ref]);
+  }, [id]);
 
-  const onMouseMove = (e) => {
-    const { clientX, clientY } = e;
-    if (resizable) {
-      let newWidth = clientX - ref.current.offsetLeft;
-      let newHeight = clientY - ref.current.offsetTop;
-      // check if the new size will overlap with any other element
-      let overlapping = false;
-      let surroundingElements = document.querySelectorAll(
-        ".surrounding-element"
-      );
-      surroundingElements.forEach((el) => {
-        if (
-          ref.current.offsetLeft + newWidth > el.offsetLeft &&
-          ref.current.offsetTop + newHeight > el.offsetTop &&
-          ref.current.offsetLeft < el.offsetLeft + el.offsetWidth &&
-          ref.current.offsetTop < el.offsetTop + el.offsetHeight
-        ) {
-          overlapping = true;
-        }
-      });
-      // if not overlapping, set the new size
-      if (!overlapping) {
-        setComponentWidth(newWidth);
-        setComponentHeight(newHeight);
-      }
-    }
+  const handleWidthChange = (e) => {
+    setWidth(e.target.value);
+    component.style.width = `${e.target.value}px`;
   };
 
-  const onMouseUp = (e) => {
-    setResizable(false);
+  const handleHeightChange = (e) => {
+    setHeight(e.target.value);
+    component.style.height = `${e.target.value}px`;
   };
 
-  // Add event listeners
-  useEffect(() => {
-    window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("mouseup", onMouseUp);
+  // const onMouseMove = (e) => {
+  //   const { clientX, clientY } = e;
+  //   if (resizable) {
+  //     let newWidth = clientX - ref.current.offsetLeft;
+  //     let newHeight = clientY - ref.current.offsetTop;
+  //     // check if the new size will overlap with any other element
+  //     let overlapping = false;
+  //     let surroundingElements = document.querySelectorAll(
+  //       ".surrounding-element"
+  //     );
+  //     surroundingElements.forEach((el) => {
+  //       if (
+  //         ref.current.offsetLeft + newWidth > el.offsetLeft &&
+  //         ref.current.offsetTop + newHeight > el.offsetTop &&
+  //         ref.current.offsetLeft < el.offsetLeft + el.offsetWidth &&
+  //         ref.current.offsetTop < el.offsetTop + el.offsetHeight
+  //       ) {
+  //         overlapping = true;
+  //       }
+  //     });
+  //     // if not overlapping, set the new size
+  //     if (!overlapping) {
+  //       setComponentWidth(newWidth);
+  //       setComponentHeight(newHeight);
+  //     }
+  //   }
+  // };
 
-    // Cleanup event listeners
-    return () => {
-      window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("mouseup", onMouseUp);
-    };
-  }, [resizable]);
+  // const onMouseUp = (e) => {
+  //   setResizable(false);
+  // };
 
-  return [resizable, componentWidth, componentHeight, activateResize];
+  // // Add event listeners
+  // useEffect(() => {
+  //   window.addEventListener("mousemove", onMouseMove);
+  //   window.addEventListener("mouseup", onMouseUp);
+
+  //   // Cleanup event listeners
+  //   return () => {
+  //     window.removeEventListener("mousemove", onMouseMove);
+  //     window.removeEventListener("mouseup", onMouseUp);
+  //   };
+  // }, [resizable]);
+
+  // return [resizable, componentWidth, componentHeight, activateResize];
+  return { width, height, handleWidthChange, handleHeightChange };
 };
 
 export default useResizable;

@@ -29,7 +29,7 @@ const ResizeTab = ({ currentComponentId }) => {
     height,
     handleWidthChange,
     handleHeightChange,
-    resetValues,
+    handleReset,
     handleSave,
   } = useResizable(currentComponentId);
   return (
@@ -75,7 +75,7 @@ const ResizeTab = ({ currentComponentId }) => {
           />
         </div>
       </div>
-      <button className="save-edit-btn" onClick={resetValues}>
+      <button className="save-edit-btn" onClick={handleReset}>
         Reset
       </button>
       <button className="save-edit-btn" onClick={handleSave}>

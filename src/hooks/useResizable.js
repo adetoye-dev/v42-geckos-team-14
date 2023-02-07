@@ -32,7 +32,7 @@ const useResizable = (id) => {
     }
   }, [id]);
 
-  const resetValues = () => {
+  const handleReset = () => {
     component.style.width = `${componentWidth}px`;
     component.style.height = `${componentHeight}px`;
     setWidth(componentWidth);
@@ -105,7 +105,7 @@ const useResizable = (id) => {
     height,
     handleWidthChange,
     handleHeightChange,
-    resetValues,
+    handleReset,
     handleSave,
   };
 };

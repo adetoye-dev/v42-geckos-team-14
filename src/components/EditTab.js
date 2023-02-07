@@ -3,6 +3,7 @@ import Context from "./Context";
 import useDeleteComponent from "../hooks/useDeleteComponent";
 import useEditText from "../hooks/useEditText";
 import "./EditTab.css";
+import useResizable from "../hooks/useResizable";
 
 const TextTab = ({ currentComponentId }) => {
   const { text, handleChange, handleSave } = useEditText(currentComponentId);
@@ -22,7 +23,9 @@ const TextTab = ({ currentComponentId }) => {
   );
 };
 
-const ResizeTab = () => {
+const ResizeTab = ({ currentComponentId }) => {
+  const { width, height, handleWidthChange, handleHeightChange } =
+    useResizable(currentComponentId);
   return (
     <>
       <h1>Resize:</h1>
@@ -33,12 +36,18 @@ const ResizeTab = () => {
             type="range"
             name="width-percentage"
             id="width-input"
-            value="100"
+            value={width}
+            onChange={(e) => handleWidthChange(e)}
             min="0"
-            max="100"
-            class="resize-input-range"
+            max="1100"
+            className="resize-input-range"
           />
-          <input className="resize-input-value" type="text" value={"100"} />
+          <input
+            className="resize-input-value"
+            type="text"
+            value={width}
+            onChange={(e) => handleWidthChange(e)}
+          />
         </div>
         <h3>Height:</h3>
         <div className="resizer-inputs">
@@ -46,12 +55,18 @@ const ResizeTab = () => {
             type="range"
             name="width-percentage"
             id="width-input"
-            value="100"
+            value={height}
+            onChange={(e) => handleHeightChange(e)}
             min="0"
-            max="100"
-            class="resize-input-range"
+            max="800"
+            className="resize-input-range"
           />
-          <input type="text" className="resize-input-value" value={"100"} />
+          <input
+            type="text"
+            className="resize-input-value"
+            value={height}
+            onChange={(e) => handleHeightChange(e)}
+          />
         </div>
       </div>
       <button className="save-edit-btn">Save Changes</button>
@@ -111,7 +126,7 @@ const EditTab = () => {
         {currentTab === "text" ? (
           <TextTab currentComponentId={currentComponentId} />
         ) : currentTab === "resize" ? (
-          <ResizeTab />
+          <ResizeTab currentComponentId={currentComponentId} />
         ) : (
           <DeleteTab
             onDeleteClick={() => deleteClickHandler(currentComponentId)}

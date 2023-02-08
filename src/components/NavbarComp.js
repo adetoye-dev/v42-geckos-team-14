@@ -18,27 +18,24 @@ function BasicExample() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" className="toggler" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto position-absolute end-0">
-            <Nav.Link
-              href="/"
+            <span
               className="navbar-links links-right-side"
               onClick={() => setShowTab("web")}
             >
               Web
-            </Nav.Link>
-            <Nav.Link
-              href="#link"
+            </span>
+            <span
               className="navbar-links links-right-side"
               onClick={() => setShowTab("mob")}
             >
               Mobile
-            </Nav.Link>
-            <Nav.Link
-              href="#link"
+            </span>
+            <span
               className="navbar-links links-right-side"
               onClick={() => setShowTab("code")}
             >
               Code
-            </Nav.Link>
+            </span>
           </Nav>
         </Navbar.Collapse>
       </Container>

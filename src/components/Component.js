@@ -1,30 +1,12 @@
-import { useRef, useState, useContext } from "react";
+import { useRef, useContext } from "react";
 import Context from "./Context";
-import useDragAndDrop from "../hooks/useDragAndDrop";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
 import "./Resizer.css";
 
 function Component(props) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { setOpenEditTab } = useContext(Context);
   const { setCurrentComponentId } = useContext(Context);
-  const { setIsComponentMove, componentPosition } = useDragAndDrop(
-    props.startPosition
-  );
 
   const componentRef = useRef(null);
-
-  const myStyle = {
-    position: "absolute",
-    top: `${componentPosition.top}px`,
-    left: `${componentPosition.left}px`,
-  };
-
-  function mouseDownHandler(e) {
-    const leftMouseButton = 0;
-    e.button === leftMouseButton && !isMenuOpen && setIsComponentMove(true);
-  }
 
   function handleDoubleClick(id) {
     setOpenEditTab(true);
@@ -35,21 +17,9 @@ function Component(props) {
     <div
       id={props.id}
       className={props.class}
-      style={myStyle}
       ref={componentRef}
-      onMouseDown={(e) => mouseDownHandler(e)}
       onDoubleClick={() => handleDoubleClick(props.id)}
     >
-      {/* <Card style={{ width: "18rem" }}>
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
-        </Card.Body>
-      </Card> */}
       {props.text}
     </div>
   );

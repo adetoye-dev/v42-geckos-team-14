@@ -4,7 +4,7 @@ import useDraggable from "../hooks/useDraggable";
 
 function PreviewArea(props) {
   const { components } = useContext(Context);
-  const { sethtmlCode } = useContext(Context);
+  const { htmlCode } = useContext(Context);
   const { showTab } = useContext(Context);
   const { setPreviewAreaBoundaries } = useContext(Context);
   const previewAreaRef = useRef(null);
@@ -52,9 +52,7 @@ function PreviewArea(props) {
   if (showTab === "code")
     return (
       <section className="showTab workArea">
-        <pre id="generatedCode" onChange={(e) => sethtmlCode(e.target.value)}>
-          The code will be here
-        </pre>
+        <pre id="generatedCode">{htmlCode}</pre>
       </section>
     );
 }

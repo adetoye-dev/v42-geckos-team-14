@@ -3,7 +3,7 @@
 const allcomponents = [
   {
     id: 1,
-    name: "bullet list",
+    name: "list group",
     tag: "ul",
     icon: "list",
     subtag: "li",
@@ -17,7 +17,7 @@ const allcomponents = [
       "Sample bullet 4",
     ],
     editImg: "nonEditable",
-    bootstrapTags: "",
+    bootstrapTags: "ListGroup.Item",
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ const allcomponents = [
     editText: "Sample button",
     editSubtext: "nonEditable",
     editImg: "nonEditable",
-    bootstrapTags: "btn btn-secondary",
+    bootstrapTags: "btn btn-primary",
   },
   {
     id: 3,
@@ -68,6 +68,19 @@ const allcomponents = [
     canBeEdited: false,
     editText: "nonEditable",
     editSubtext: ["Title example", "lorem ipsum text"],
+    editImg: "nonEditable",
+    bootstrapTags: "",
+  },
+  {
+    id: 6,
+    name: "container",
+    tag: "container",
+    icon: "columns-3",
+    subtag: "notApplicable",
+    appliedOnlyOnce: false,
+    canBeEdited: true,
+    editText: "Sample container",
+    editSubtext: "nonEditable",
     editImg: "nonEditable",
     bootstrapTags: "",
   },

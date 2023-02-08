@@ -1,5 +1,10 @@
+import useAddComponent from "./useAddComponent";
+
 const useDraggable = () => {
-  const handleDragStart = (e) => {
+  const { addComponent } = useAddComponent();
+
+  const handleDragStart = (e, item) => {
+    e.dataTransfer.setData("components", JSON.stringify(item));
     console.log("drag started");
   };
 
@@ -10,6 +15,9 @@ const useDraggable = () => {
 
   const handleDragDrop = (e) => {
     console.log("item was dropped");
+    const item = e.dataTransfer.getData("components");
+    console.log(JSON.parse(item));
+    addComponent(JSON.parse(item));
   };
 
   return { handleDragStart, handleDragOver, handleDragDrop };

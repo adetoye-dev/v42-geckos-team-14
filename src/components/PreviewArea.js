@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useContext } from "react";
 import Context from "./Context";
+import useDraggable from "../hooks/useDraggable";
 
 function PreviewArea(props) {
   const { components } = useContext(Context);
@@ -7,6 +8,7 @@ function PreviewArea(props) {
   const { showTab } = useContext(Context);
   const { setPreviewAreaBoundaries } = useContext(Context);
   const previewAreaRef = useRef(null);
+  const { handleDragOver, handleDragDrop } = useDraggable();
 
   function checkPreviewBoundaries() {
     const preview = previewAreaRef.current;
@@ -36,7 +38,12 @@ function PreviewArea(props) {
   if (showTab === "web")
     return (
       <section className="showTab workArea">
-        <div className="previewArea" ref={previewAreaRef}>
+        <div
+          className="previewArea"
+          ref={previewAreaRef}
+          onDragOver={(e) => handleDragOver(e)}
+          onDrop={(e) => handleDragDrop(e)}
+        >
           {renderComponents}
         </div>
       </section>

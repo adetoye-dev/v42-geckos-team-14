@@ -4,7 +4,7 @@ const allcomponents = [
   {
     id: 1,
     name: "list group",
-    tag: "ul",
+    tag: "list",
     icon: "list",
     subtag: "li",
     appliedOnlyOnce: false,
@@ -34,7 +34,7 @@ const allcomponents = [
   },
   {
     id: 3,
-    name: "social media link",
+    name: "link",
     tag: "a",
     icon: "link",
     subtag: "notApplicable",
@@ -47,8 +47,8 @@ const allcomponents = [
   },
   {
     id: 4,
-    name: "header with logo",
-    tag: "header",
+    name: "Nav Bar",
+    tag: "nav",
     icon: "address-card",
     subtag: "notApplicable",
     appliedOnlyOnce: true,
@@ -60,7 +60,7 @@ const allcomponents = [
   },
   {
     id: 5,
-    name: "text with tittle",
+    name: "Text",
     tag: "div",
     icon: "text-height",
     subtag: ["h1", "p"],
@@ -75,7 +75,7 @@ const allcomponents = [
     id: 6,
     name: "container",
     tag: "container",
-    icon: "columns-3",
+    icon: "columns",
     subtag: "notApplicable",
     appliedOnlyOnce: false,
     canBeEdited: true,

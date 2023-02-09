@@ -2,6 +2,7 @@ import { useContext } from "react";
 import Component from "../components/Component";
 import Context from "../components/Context";
 import { nanoid } from "nanoid";
+import BasicExample from "../components/NavbarComp";
 
 function useAddComponent() {
   const { components, setComponents, previewAreaBoundaries } =
@@ -22,18 +23,10 @@ function useAddComponent() {
 
   function createComponent(item) {
     const id = nanoid();
-    const componentPosition = {
-      top: calculateTopOffset(),
-      left: 20,
-    };
 
     return (
       <Component
         class={item.bootstrapTags}
-        startPosition={{
-          top: componentPosition.top,
-          left: componentPosition.left,
-        }}
         // startPosition={{ top: selectedComponent.offsetTop, left: selectedComponent.offsetLeft }}
         id={id}
         key={id}

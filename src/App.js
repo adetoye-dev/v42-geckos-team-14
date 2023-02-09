@@ -21,6 +21,7 @@ import {
   faHandPointer,
   faImages,
   faMemory,
+  faColumns,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -39,7 +40,8 @@ library.add(
   faFolderBlank,
   faHandPointer,
   faImages,
-  faMemory
+  faMemory,
+  faColumns
 );
 
 function App() {

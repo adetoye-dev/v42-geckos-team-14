@@ -1,8 +1,8 @@
 import ListGroup from "react-bootstrap/ListGroup";
 
-function DefaultExample() {
+function ListGroupSample(props) {
   return (
-    <ListGroup>
+    <ListGroup id={props.id}>
       <ListGroup.Item>Cras justo odio</ListGroup.Item>
       <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
       <ListGroup.Item>Morbi leo risus</ListGroup.Item>
@@ -12,4 +12,4 @@ function DefaultExample() {
   );
 }
 
-export default DefaultExample;
+export default ListGroupSample;

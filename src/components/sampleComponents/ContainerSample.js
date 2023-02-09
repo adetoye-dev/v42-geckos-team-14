@@ -2,9 +2,9 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-function ContainerFluidExample() {
+function ContainerSample(props) {
   return (
-    <Container fluid>
+    <Container id={props.id} fluid>
       <Row>
         <Col>1 of 1</Col>
       </Row>
@@ -12,4 +12,4 @@ function ContainerFluidExample() {
   );
 }
 
-export default ContainerFluidExample;
+export default ContainerSample;

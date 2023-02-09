@@ -3,9 +3,9 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
-function BasicExample() {
+function UserNavSample(props) {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="light" expand="lg" id={props.id}>
       <Container>
         <Navbar.Brand href="#home">Your logo</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -31,4 +31,4 @@ function BasicExample() {
   );
 }
 
-export default BasicExample;
+export default UserNavSample;

@@ -2,7 +2,9 @@ import { useContext } from "react";
 import Component from "../components/Component";
 import Context from "../components/Context";
 import { nanoid } from "nanoid";
-import BasicExample from "../components/NavbarComp";
+import UserNavSample from "../components/sampleComponents/UserNavSample";
+import ContainerSample from "../components/sampleComponents/ContainerSample";
+import ListGroupSample from "../components/sampleComponents/ListGroupSample";
 
 function useAddComponent() {
   const { components, setComponents, previewAreaBoundaries } =
@@ -23,6 +25,18 @@ function useAddComponent() {
 
   function createComponent(item) {
     const id = nanoid();
+
+    if (item.tag === "nav") {
+      return <UserNavSample id={id} />;
+    }
+
+    if (item.tag === "list") {
+      return <ListGroupSample id={id} />;
+    }
+
+    if (item.tag === "container") {
+      return <ContainerSample id={id} />;
+    }
 
     return (
       <Component

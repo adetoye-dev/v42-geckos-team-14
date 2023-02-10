@@ -45,7 +45,7 @@ const ResizeTab = ({ currentComponentId }) => {
             value={width}
             onChange={(e) => handleWidthChange(e)}
             min="0"
-            max="1100"
+            max="936"
             className="resize-input-range"
           />
           <input

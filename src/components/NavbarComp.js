@@ -26,12 +26,6 @@ function BasicExample() {
             </span>
             <span
               className="navbar-links links-right-side"
-              onClick={() => setShowTab("mob")}
-            >
-              Mobile
-            </span>
-            <span
-              className="navbar-links links-right-side"
               onClick={() => setShowTab("code")}
             >
               Code

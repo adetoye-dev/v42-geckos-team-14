@@ -39,7 +39,7 @@ function ComponentList(props) {
     ) : (
       <section id="ComponentList" className="ComponentList">
         <SearchBar findComponent={findComponent} />
-        <h5 className="menu-headings">Standard:</h5>
+        <h5 className="menu-headings">Components:</h5>
         <div className="component-list-items">
           {componentItems.map((item) => {
             return (
@@ -56,7 +56,6 @@ function ComponentList(props) {
           })}
         </div>
 
-        <h5 className="menu-headings">Advanced:</h5>
       </section>
     );
   if (showTab === "code")
@@ -79,13 +78,6 @@ function ComponentList(props) {
             Copy
           </button>
         </span>
-      </section>
-    );
-  if (showTab === "mob")
-    return (
-      <section className="codeMenu">
-        <br />
-        <h1>Mobile will be implemented after MVP is finished!</h1>
       </section>
     );
 }

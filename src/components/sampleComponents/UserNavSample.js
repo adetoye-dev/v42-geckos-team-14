@@ -5,7 +5,12 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 
 function UserNavSample(props) {
   return (
-    <Navbar bg="light" expand="lg" id={props.id}>
+    <Navbar
+      bg="light"
+      expand="lg"
+      id={props.id}
+      onDoubleClick={() => props.handleDoubleClick(props.id)}
+    >
       <Container>
         <Navbar.Brand href="#home">Your logo</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

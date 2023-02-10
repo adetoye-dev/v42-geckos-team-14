@@ -50,7 +50,7 @@ function ComponentList(props) {
                 text={item.name}
                 icon={item.icon}
                 item={item}
-                handleClick={() => addComponent(item)}
+                // handleClick={() => addComponent(item)}
               />
             );
           })}

@@ -22,7 +22,7 @@ const allcomponents = [
   {
     id: 2,
     name: "button",
-    tag: "button",
+    tag: "buntton",
     icon: "hand-pointer",
     subtag: "notApplicable",
     appliedOnlyOnce: false,
@@ -43,7 +43,7 @@ const allcomponents = [
     editText: "Sample social link",
     editSubtext: "nonEditable",
     editImg: "nonEditable",
-    bootstrapTags: "",
+    bootstrapTags: "btn btn-success",
   },
   {
     id: 4,

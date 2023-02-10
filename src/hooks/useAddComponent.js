@@ -52,6 +52,7 @@ function useAddComponent() {
         id={id}
         key={id}
         text={item.editText}
+        handleDoubleClick={handleDoubleClick}
       />
     );
   }

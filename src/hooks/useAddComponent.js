@@ -9,6 +9,13 @@ import ListGroupSample from "../components/sampleComponents/ListGroupSample";
 function useAddComponent() {
   const { components, setComponents, previewAreaBoundaries } =
     useContext(Context);
+  const { setOpenEditTab } = useContext(Context);
+  const { setCurrentComponentId } = useContext(Context);
+
+  function handleDoubleClick(id) {
+    setOpenEditTab(true);
+    setCurrentComponentId(id);
+  }
 
   //function to calculate top offset for newly added components
   const calculateTopOffset = () => {
@@ -27,15 +34,15 @@ function useAddComponent() {
     const id = nanoid();
 
     if (item.tag === "nav") {
-      return <UserNavSample id={id} />;
+      return <UserNavSample id={id} handleDoubleClick={handleDoubleClick} />;
     }
 
     if (item.tag === "list") {
-      return <ListGroupSample id={id} />;
+      return <ListGroupSample id={id} handleDoubleClick={handleDoubleClick} />;
     }
 
     if (item.tag === "container") {
-      return <ContainerSample id={id} />;
+      return <ContainerSample id={id} handleDoubleClick={handleDoubleClick} />;
     }
 
     return (

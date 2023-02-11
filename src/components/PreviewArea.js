@@ -4,7 +4,7 @@ import useDraggable from "../hooks/useDraggable";
 
 function PreviewArea(props) {
   const { components } = useContext(Context);
-  const { htmlCode } = useContext(Context);
+  const { htmlCodeTemplate } = useContext(Context);
   const { showTab } = useContext(Context);
   const { setPreviewAreaBoundaries } = useContext(Context);
   const previewAreaRef = useRef(null);
@@ -52,18 +52,7 @@ function PreviewArea(props) {
   if (showTab === "code")
     return (
       <section className="showTab workArea">
-        <pre id="generatedCode">
-          {`<!DOCTYPE html>
-    <html>
-        <head>
-            <title>Generated HTML File</title>
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        </head>
-        <body>
-          ${htmlCode}
-        </body>
-    </html>`}
-        </pre>
+        <pre id="generatedCode">{htmlCodeTemplate}</pre>
       </section>
     );
 }

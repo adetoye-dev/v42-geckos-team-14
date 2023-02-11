@@ -34,7 +34,9 @@ function ComponentList(props) {
   }
 
   const copyToClipBoard = () => {
-    navigator.clipboard.writeText(htmlCodeTemplate);
+    if (navigator.clipboard.writeText(htmlCodeTemplate)) {
+      alert("copied to clipboard");
+    }
   };
 
   if (showTab === "web")

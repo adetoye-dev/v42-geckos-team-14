@@ -25,7 +25,18 @@ function ComponentList(props) {
   };
 
   async function saveToFile() {
-    let myBlob = new Blob([htmlCode], { type: "text/document" });
+    let htmlCodeTemplate = `<!DOCTYPE html>
+    <html>
+        <head>
+            <title>Generated HTML File</title>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        </head>
+        <body>
+          ${htmlCode}
+        </body>
+    </html>`;
+
+    let myBlob = new Blob([htmlCodeTemplate], { type: "text/document" });
     let url = URL.createObjectURL(myBlob);
     let link = document.createElement("a");
     link.setAttribute("href", url);

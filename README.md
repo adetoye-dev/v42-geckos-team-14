@@ -1,5 +1,7 @@
 # DRAG AND DROP HTML GENERATOR
 
+![video-demo](https://user-images.githubusercontent.com/71382301/218255773-6677479e-b409-48dd-a97f-66db3dbfd54d.gif)
+
 ### Developed by
 
 Elena, Jakub, Adetoye & Carmen
